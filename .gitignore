@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 java_hy/.classpath
 java_hy/.project
+java_hy/src/.classpath
+java_hy/src/.project
