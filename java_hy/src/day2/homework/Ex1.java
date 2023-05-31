@@ -11,6 +11,13 @@ public class Ex1 {
 		 * [출력] 1 + 2
 		 */
 		
+		String str="";
+		char op = '+';
+		int num1 = 2, num2 = 5;
+		str = "" + num1 + op + num2 + "=" + (num1+num2);
+		System.out.println(str);
+		
+		
 	}
 
 }
