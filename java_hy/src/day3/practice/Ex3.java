@@ -14,17 +14,19 @@ public class Ex3 {
 		 */
 		int num;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("input number : ");
+			System.out.println("input number : ");
 		num = sc.nextInt();
-		
+		//num가 0 이다 => 0과 같다
 		if(num == 0) {
 			System.out.println(0);
 		}
+		//num가 음수이다 => 0보다 작다 
 		if(num < 0) {
-			System.out.println(" is negative");	
+			System.out.println(num + " is a negative number.");	
 		}
+		//num가 양수이다 => 0보다 크다
 		if(num > 0) {
-			System.out.println(num + " is positive");
+			System.out.println(num + " is a positive number.");
 			sc.close();
 		}
 	}
