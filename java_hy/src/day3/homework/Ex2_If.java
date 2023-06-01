@@ -13,10 +13,13 @@ public class Ex2_If {
 		 *W
 		 *Are you a man? woman
 		 */
-		int num;
+		
 		Scanner sc= new Scanner(System.in);
 			System.out.println("input gender : ");
-		num = sc.nextInt();
+		String gender1;
+		
+		String result = ? "man" : "woman";
+		System.out.println("Are you a woman? "+ gender1 + result);
 		
 		sc.close();
 	}
