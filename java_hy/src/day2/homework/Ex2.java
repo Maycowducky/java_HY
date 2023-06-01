@@ -30,11 +30,15 @@ public class Ex2 {
 		double div = num1 / (double)num2;
 		int mod = num1 % num2;
 		//결과를 콘솔에 출력
-		System.out.println(num1 + "+" + num2 + "=" + sum);
-		System.out.println(num1 + "-" + num2 + "=" + sub);
-		System.out.println(num1 + "*" + num2 + "=" + mul);
-		System.out.println(num1 + "/" + num2 + "=" + div);
-		System.out.println(num1 + "%" + num2 + "=" + mod);
+		//다른방법 예:
+		System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+		//System.out.println(num1 + " + " + num2 + " = " + sum);
+		System.out.println(num1 + " - " + num2 + " = " + sub);
+		System.out.println(num1 + " * " + num2 + " = " + mul);
+		System.out.println(num1 + " / " + num2 + " = " + div);
+		//System.out.println(num1 + " % " + num2 + " = " + (num1 % num2));
+		//%는 + 보다 우선순위가 높기 때문에 ()를 생략해도 되지만 위에 +와 같은 형태로 보여주기위해 ()를 붙임
+		System.out.println(num1 + " % " + num2 + " = " + mod);
 		
 		sc.close();
 				
