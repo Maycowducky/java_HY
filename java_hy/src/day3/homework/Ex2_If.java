@@ -1,5 +1,7 @@
 package day3.homework;
 
+import java.util.Scanner;
+
 public class Ex2_If {
 
 	public static void main(String[] args) {
@@ -11,7 +13,12 @@ public class Ex2_If {
 		 *W
 		 *Are you a man? woman
 		 */
-
+		int num;
+		Scanner sc= new Scanner(System.in);
+			System.out.println("input gender : ");
+		num = sc.nextInt();
+		
+		sc.close();
 	}
 
 }
