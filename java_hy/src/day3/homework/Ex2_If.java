@@ -16,12 +16,17 @@ public class Ex2_If {
 		
 		Scanner sc= new Scanner(System.in);
 			System.out.println("input gender : ");
-		String gender1;
+		String gender= sc.nextLine();
 		
-		String result = ? "man" : "woman";
-		System.out.println("Are you a woman? "+ gender1 + result);
-		
+		boolean res = gender.equals("W");
+		if(res) {
+			System.out.println(gender + "는 여자입니다.");	
+		}else {
+			System.out.println(gender + "는 남자입니다.");
+			}
 		sc.close();
+		}
+		
+		
 	}
 
-}
