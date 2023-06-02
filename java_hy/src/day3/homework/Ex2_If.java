@@ -36,7 +36,7 @@ public class Ex2_If {
 		
 		//gender가 M과 같다
 		//if gender 밑줄에 result = "man";
-		//출력에 질문 + result
+		//출력에 질문 + result 예:)System.out.println("Are you woman?" + result);
 		if(gender == 'M') {
 			System.out.println("Are you woman?" + "man");
 			
@@ -44,6 +44,7 @@ public class Ex2_If {
 		
 		//gender가 W와 같다
 		//if gender 밑줄에 result = "woman";
+		
 		if(gender == 'W') {
 			System.out.println("Are you woman?" + "woman");
 			
