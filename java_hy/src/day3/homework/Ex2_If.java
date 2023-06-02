@@ -11,20 +11,47 @@ public class Ex2_If {
 		 *M
 		 *Are you a woman? man
 		 *W
-		 *Are you a man? woman
+		 *Are you a woman? woman
 		 */
 		
-		Scanner sc= new Scanner(System.in);
-			System.out.println("input gender : ");
-		String gender= sc.nextLine();
+		/*Scanner sc= new Scanner(System.in);
+		 *	System.out.println("input gender : ");
+		 *String gender= sc.nextLine();
+	
+		 *boolean res = gender.equals("W");
+		 *if(res) {
+		 *	System.out.println(gender + "는 여자입니다.");	
+		 *}else {
+		 *	System.out.println(gender + "는 남자입니다.");
+	 	 *}
+		 *sc.close();
+		 * 
+		 */
+		//출력 2개가 마음에 안들때 
+		//String result = "";
+		char gender;
+		Scanner sc = new Scanner(System.in);
+			System.out.println("input gender :");
+		gender = sc.next().charAt(0);
 		
-		boolean res = gender.equals("W");
-		if(res) {
-			System.out.println(gender + "는 여자입니다.");	
-		}else {
-			System.out.println(gender + "는 남자입니다.");
-			}
+		//gender가 M과 같다
+		//if gender 밑줄에 result = "man";
+		//출력에 질문 + result
+		if(gender == 'M') {
+			System.out.println("Are you woman?" + "man");
+			
+		}
+		
+		//gender가 W와 같다
+		//if gender 밑줄에 result = "woman";
+		if(gender == 'W') {
+			System.out.println("Are you woman?" + "woman");
+			
+		}
+		
 		sc.close();
+		
+		
 		}
 		
 		
