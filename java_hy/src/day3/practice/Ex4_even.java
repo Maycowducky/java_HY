@@ -18,7 +18,7 @@ public class Ex4_even {
 		 * num % 2 != 0)
 		 */
 		
-		/*
+		/* 강사님 예:)
 		 * if num % 2 !=0) {
 		 * System.out.println(num + " is a even number.");
 		 * if num % 2 ==0) {
@@ -28,7 +28,7 @@ public class Ex4_even {
 		if(num %2 == 0) {
 			System.out.println(num + " is a even number.");
 		}
-		//
+		
 		else{
 			System.out.println(num + " is a odd number.");
 		}
