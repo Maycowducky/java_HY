@@ -21,7 +21,7 @@ public class NumberEx {
 	//아니면 num에 1을 더한 후
 	//num에 1을 더한 값을 num에 저장
 	else {
-		num = num + 1;
+		num += 1;
 	}
 	//num을 출력
 	System.out.println(num);
