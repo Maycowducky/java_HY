@@ -1,5 +1,7 @@
 package day4.homework;
 
+import java.util.Scanner;
+
 public class NumberEx {
 
 	public static void main(String[] args) {
@@ -7,6 +9,19 @@ public class NumberEx {
 		 * 1을 더한 후, num를 출력하는 코드를 작성하세요.
 		 * 
 		 */
+	int num = 4;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("input number: ");
+	num = sc.nextInt();
+	
+	if(num % 2 == 0) {
+		System.out.println(num + " is a even number");
+	}
+	else if (num % 3 == 0) {
+		System.out.println(num + 1);
+	}
+	
+	sc.close();
 	}
 
 }
