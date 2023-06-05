@@ -29,16 +29,16 @@ public class SeasonEx {
 		//mon가 1,2,12일 때 12의 실행문이 실행이 되서 겨울이 출력
 		//1,2의 실행문의 없고, break문도 없음
 		//case 3,4,5:일때는 JDK 7버전 이후에 가능.
-		case 3,4,5://또는 case 3: case 4: case 5:
+		case 3,4,5://또는 case 3: case 4: case 5: (JDK 7 이하일때)
 			System.out.println(mon + " is spring.");
 			break;
-		case 6,7,8://또는 case 6: case 7: case 8:
+		case 6,7,8://또는 case 6: case 7: case 8: (JDK 7 이하일때)
 			System.out.println(mon + " is summer.");
 			break;
-		case 9,10,11://또는 case 9: case 10: case 11:
+		case 9,10,11://또는 case 9: case 10: case 11: (JDK 7 이하일때)
 			System.out.println(mon + " is fall.");
 			break;
-		case 12,1,2: //또는 case 1: case 2: case 12:
+		case 12,1,2: //또는 case 1: case 2: case 12: (JDK 7 이하일때)
 			System.out.println(mon + " is winter.");
 			break;
 		default:
