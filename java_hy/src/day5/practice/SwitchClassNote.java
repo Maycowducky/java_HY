@@ -1,6 +1,6 @@
 package day5.practice;
 
-public class SwitchEx {
+public class SwitchClassNote {
 
 	public static void main(String[] args) {
 		/*switch(변수 또는 식) {
