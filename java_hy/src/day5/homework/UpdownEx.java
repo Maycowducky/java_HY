@@ -14,16 +14,21 @@ public class UpdownEx {
 		 * input : 45
 		 * Good!
 		 */
-		int i = 0;
+		int i;
+		int min = 1, max = 100;
+		int random = (int)(Math.random() * (max - min + 1) + min);
 		Scanner sc = new Scanner(System.in);
+		System.out.println("input: ");
+		System.out.println(random);
+		i= sc.nextInt();
 		while(i != 3) {
-			System.out.println("input: ");
-			i= sc.nextInt();
+			
+			
 			switch(i) {
-			case 50:
+			case 46-100:
 				System.out.println("Down!");
 				break;
-			case 40:
+			case 1-44:
 				System.out.println("Up!");
 				break;
 			case 45:
