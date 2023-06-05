@@ -13,7 +13,7 @@ public class EvenEx {
 		default:
 			System.out.println(num + " is a odd number.");
 		}
-		
+		 
 	}
 
 }
