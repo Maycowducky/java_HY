@@ -1,5 +1,7 @@
 package day5.homework;
 
+import java.util.Scanner;
+
 public class TeamLeaderEx {
 
 	public static void main(String[] args) {
@@ -14,7 +16,21 @@ public class TeamLeaderEx {
 		 * 6
 		 * Student number 6 is the team leader.
 		 */
+		int num;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("input student number: ");
+		num = sc.nextInt();
+		sc.close();
 		
+		switch(num % 2) {
+		case 0:
+			System.out.println("Student number 1 is a member of the team.");
+		case 1:
+			System.out.println("Student number 25 is the team leader.");
+		break;
+		default:
+			System.out.println("Student" + num + " is a member of the team.");
+		}
 	}
 
 }

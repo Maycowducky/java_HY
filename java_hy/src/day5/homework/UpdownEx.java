@@ -1,5 +1,7 @@
 package day5.homework;
 
+import java.util.Scanner;
+
 public class UpdownEx {
 
 	public static void main(String[] args) {
@@ -12,6 +14,24 @@ public class UpdownEx {
 		 * input : 45
 		 * Good!
 		 */
+		int i = 0;
+		Scanner sc = new Scanner(System.in);
+		while(i != 3) {
+			System.out.println("input: ");
+			i= sc.nextInt();
+			switch(i) {
+			case 50:
+				System.out.println("Down!");
+				break;
+			case 40:
+				System.out.println("Up!");
+				break;
+			case 45:
+				System.out.println("Good!" + " Program Exit!");
+				break;
+			}
+		}
+		sc.close();
 	}
 
 }
