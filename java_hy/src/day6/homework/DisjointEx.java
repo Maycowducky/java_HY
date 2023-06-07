@@ -1,5 +1,7 @@
 package day6.homework;
 
+import java.util.Scanner;
+
 public class DisjointEx {
 
 	public static void main(String[] args) {
@@ -10,6 +12,21 @@ public class DisjointEx {
 		 * input 2 numbers : 8 4
 		 * Not Disjoint! (서로소 아님)
 		 */
+		int num1, num2,i = 1, GCD = 1;
+		Scanner sc = new Scanner(System.in);
+		num1 = sc.nextInt();
+		num2= sc.nextInt();
+		System.out.println("input 2 numbers: ");
+		
+		while(i <= num1){
+			System.out.println("Disjoint!");
+			GCD=i;
+			if(num1 % i == 0) {
+				System.out.println();
+			}
+		}
+		i++;
+		sc.close();
 	}
 
 }
