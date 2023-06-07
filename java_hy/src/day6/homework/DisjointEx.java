@@ -12,12 +12,13 @@ public class DisjointEx {
 		 * input 2 numbers : 8 4
 		 * Not Disjoint! (서로소 아님)
 		 */
-		int num1, num2,i = 1, GCD = 1;
+		int num1, num2, i = 1, GCD = 1;
 		Scanner sc = new Scanner(System.in);
+		System.out.println("input 2 numbers: ");
 		num1 = sc.nextInt();
 		num2= sc.nextInt();
-		System.out.println("input 2 numbers: ");
 		
+		i = 1;
 		while(i <= num1){
 			System.out.println("Disjoint!");
 			GCD=i;
