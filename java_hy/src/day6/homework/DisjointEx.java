@@ -23,7 +23,7 @@ public class DisjointEx {
 			System.out.println("Disjoint!");
 			GCD=i;
 			if(num1 % i == 0) {
-				System.out.println();
+				System.out.println("");
 			}
 		}
 		i++;
