@@ -16,18 +16,20 @@ public class DisjointEx {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("input 2 numbers: ");
 		num1 = sc.nextInt();
-		num2= sc.nextInt();
-		
+		num2 = sc.nextInt();
 		i = 1;
-		while(i <= num1){
-			System.out.println("Disjoint!");
-			GCD=i;
-			if(num1 % i == 0) {
-				System.out.println("");
+		while(i <= num1) {
+			
+			if(num1 % i == 0 && num2 % i == 0) {
+				GCD = i;
 			}
+			i++;
 		}
-		i++;
+		if(GCD == 1) {
+			System.out.println("Disjoint!");
+		} else 
+				System.out.println("Not Disjoint!");
 		sc.close();
+			}
+	
 	}
-
-}
