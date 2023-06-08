@@ -16,11 +16,11 @@ public class MultiplicationTableEx {
 		Scanner sc = new Scanner(System.in);
 			System.out.println("input number: ");
 		i=sc.nextInt();
-			sc.close();
 		while (i <= 9) {
 			System.out.println("2 X " + i + " = " + 2 * i);
 			i++;
 		}
+		sc.close();
 	}
 
 }
