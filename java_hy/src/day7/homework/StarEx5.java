@@ -12,6 +12,7 @@ public class StarEx5 {
 		 * 			***
 		 * 			 *
 		 */
+		
 		int i,j;
 		/* 외부 반복문
 		 * 반복 횟수 : i는 1부터 5까지 1씩 증가
@@ -39,6 +40,15 @@ public class StarEx5 {
 				System.out.print("*");
 			}
 			//엔터
+			System.out.println();
+		}
+		for(i = 4; i >= 1; i--) {
+			for(j = 1; j <= 5-i; j++) {
+				System.out.print(" ");
+			}
+			for(j = 1; j <= i * 2 - 1; j++) {
+				System.out.print("*");
+			}
 			System.out.println();
 		}
 	}
