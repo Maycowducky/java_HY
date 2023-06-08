@@ -41,7 +41,8 @@ public class StarEx5 {
 			}
 			//엔터
 			System.out.println();
-		}
+		
+		} //하단
 		for(i = 4; i >= 1; i--) {
 			for(j = 1; j <= 5-i; j++) {
 				System.out.print(" ");
@@ -50,6 +51,6 @@ public class StarEx5 {
 				System.out.print("*");
 			}
 			System.out.println();
-		}
-	}
+		} //for
+	} // main
 }
