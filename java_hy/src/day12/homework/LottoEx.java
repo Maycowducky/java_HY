@@ -15,7 +15,6 @@ public class LottoEx {
 		 * bonus  : 2
 		 * user   : 1 2 3 4 5 6
 		 * losing ticket!
-		 * 
 		 */
 	}
 
