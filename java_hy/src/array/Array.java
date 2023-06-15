@@ -34,8 +34,8 @@ public class Array {
 		return false;
 	}
 	/** min에서 max사이의 랜덤한 수를 생성해서 배열에 저장하는 메서드
-	 * 매개변수 : 최소값, 최대값, 배열 => int min, int max, int arr[]
-	 * 리턴타입 : 없음
+	 * 매개변수 : 최소값, 최대값, 배열 → int min, int max, int arr[]
+	 * 리턴타입 : 없음 → void
 	 * 매서드명 : createRandomArray
 	 */
 	public static int [] createRandomArray (int min, int max, int arr[]) {
@@ -65,4 +65,31 @@ public class Array {
 		}
 		return arr;
 	}
+	/** 주어진 배열에 중복된 값이 있는지 없는지 알려주는 메서드
+	 * 매개변수 : 배열 → int arr[]
+	 * 리턴타입 : 중복여부 → boolean
+	 * 메서드명 : arrayCheck
+	 */
+	public static boolean arrayCheck(int arr[]) {
+		if(arr == null) {
+			return false;
+		}
+		//arr 배열의 다른 번지들 끼리 비교해서 같은 값이 있는지 확인하는 반복문
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < arr.length; j++) {
+				//같은 번지면 건너뜀
+				if(i == j) {
+					continue;
+				}
+				//다른 번지이고 값이 같으면 중복됐다고 리턴
+				if(arr[i] == arr[j]) {
+					return true;
+				}
+			}
+		}
+		//반복문이 끝날때까지 중복이 안되면 중복이 안됐다고 리턴
+		return false;
+	}
+	
+	
 }
