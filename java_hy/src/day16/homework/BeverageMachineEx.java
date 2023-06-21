@@ -74,7 +74,7 @@ public class BeverageMachineEx {
 			System.out.print("금액 입력: ");
 			int amount = sc.nextInt();
 			
-			if(amount < 0) {
+			if(amount > 0) {
 				cash += amount;
 				System.out.println(amount + "won");
 				System.out.println(cash + "won 남았습니다.");
