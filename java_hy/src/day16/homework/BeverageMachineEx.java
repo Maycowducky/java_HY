@@ -10,7 +10,7 @@ public class BeverageMachineEx {
 		 * 1. 금액 투입
 		 * 2. 메뉴 선택
 		 * 3. 제품 입고
-		 * 4. 프로그램 종류
+		 * 4. 프로그램 종료
 		 */
 
 	}
