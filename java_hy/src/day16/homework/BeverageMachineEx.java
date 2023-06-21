@@ -53,9 +53,6 @@ public class BeverageMachineEx {
 		private static void stock() {
 		
 		}
-		private static void selectMenu(Scanner sc) {
-			
-		}
 		private static void printMenu() {
 			System.out.println("======Vending Machine=====");
 			System.out.println("1. 금액 투입");
@@ -63,6 +60,7 @@ public class BeverageMachineEx {
 			System.out.println("3. 제품 입고");
 			System.out.println("4. 프로그램 종료");
 			System.out.println("==========================");
+			
 		}
 		private static void insertCash(Scanner sc) {
 			System.out.print("금액 입력: ");
@@ -70,8 +68,43 @@ public class BeverageMachineEx {
 			
 			if(amount < 0) {
 				cash += amount;
-				
+				System.out.println(amount + "won");
+				System.out.println(cash + "won 남았습니다.");
+			}else {
+				System.out.println("잔액이 부족합니다. 다시 시도해주세요.");
 			}
+		}
+		private static void selectMenu(Scanner sc) {
+			if(cash <= 0) {
+				System.out.println("잔액이 부족합니다. 동전을 투입해주세요.");
+				return;
+			}
+			System.out.println("===========메뉴============");
+			System.out.println("1. 코카콜라(1300won)");
+			System.out.println("2. 스프라이트(1200won)");
+			System.out.println("3. 환타(1000won)");
+			System.out.println("==========================");
+			
+			System.out.print("메뉴 선택: ");
+			int choice = sc.nextInt();
+			
+			switch(choice) {
+			case 1:
+				dispenseBeverage("코카콜라", 1300, cokeStock);
+				break;
+			case 2:
+				dispenseBeverage("스프라이트", 1200, spriteStock);
+				break;
+			case 3:
+				dispenseBeverage("환타", 1000, fantaStock);
+				break;
+			default:
+				System.out.println("없는 번호 입니다. 다른 번호 선택해주세요.");
+			}
+			
+		}
+		private static void dispenseBeverage(String string, int i, int cokeStock2) {
+			
 		}
 	}
 
