@@ -3,8 +3,42 @@ package day16.abstractex;
 public class AbstractEx {
 
 	public static void main(String[] args) {
+		// 추상 클래스를 이용하여 객체를 만들 수 없다.
+		// A a = new A();
+		//=================================
+		//구현되지 않은 추상 메서드를 객체 생성후에 오버라이딩을 해주면 가능.
+		A a = new A() {
+			public void test() {
+				System.out.println("Class A TEST");
+			}
+		};
+		a.test();
+		A a2 = new A() {
+			public void test() {
+				System.out.println("Class A2 TEST");
+			}
+		};
+		a2.test();
+		//ChildA1도 추상 클래스이기 때문에 ChildA1으로 객체를 생성할 수 없다.
+//		ChildA1 ca1 = new ChildA1() {
+//			
+//			@Override
+//			public void test() {
+//				// TODO Auto-generated method stub
+//				System.out.println("ChildA1 TEST");
+//			}
+//		};
+//		ca1.test();
 		
+		/* 추상 클래스를 상속받은 ChildA2는 일반 클래스이기 때문에 객체 생성가능.*/
+		//모든 기능이 구현되어 있다 → 객체 생성 가능
+		//모든 기능이 구현되어 있지 않다 → 추상 메서드가 있다 → 객체 생성이 불가능
+		ChildA2 ca2 = new ChildA2(); //오버라이딩을 했기 때문에 가능
+		ca2.test();
 		
+		//다형성 : 하나의 객체에 여러 타입이 오는 것
+		a = ca2; // 업 캐스팅에 의해 ca2객체를 a가 다룰 수 있다.
+		a.test();
 	}
 
 }
