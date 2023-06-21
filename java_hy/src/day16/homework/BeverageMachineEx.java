@@ -23,14 +23,12 @@ public class BeverageMachineEx {
 		 * 잔돈 얼마가 나옵니다.
 		 */
 		private static int cash;
-		private static int cokeStock;
-		private static int spriteStock;
-		private static int fantaStock;
+		private static int spriteStock, cokeStock, fantaStock;
 		
 		public static void main(String[] args) {
 			cash = 30000;
-			cokeStock = 15;
 			spriteStock = 15;
+			cokeStock = 15;
 			fantaStock = 15;
 			
 			Scanner sc = new Scanner(System.in);
@@ -64,12 +62,12 @@ public class BeverageMachineEx {
 		
 		}
 		private static void printMenu() {
-			System.out.println("======메  뉴=====");
+			System.out.println("======메  뉴======");
 			System.out.println("1. 금액 투입");
 			System.out.println("2. 메뉴 선택");
 			System.out.println("3. 제품 입고");
 			System.out.println("4. 프로그램 종료");
-			System.out.println("================");
+			System.out.println("=================");
 			
 		}
 		private static void insertCash(Scanner sc) {
@@ -90,8 +88,8 @@ public class BeverageMachineEx {
 				return;
 			}
 			System.out.println("===========메뉴============");
-			System.out.println("1. 코카콜라(1300won)");
-			System.out.println("2. 스프라이트(1200won)");
+			System.out.println("1. 스프라이트(1200won)");
+			System.out.println("2. 코카콜라(1300won)");
 			System.out.println("3. 환타(1000won)");
 			System.out.println("==========================");
 			
@@ -100,10 +98,10 @@ public class BeverageMachineEx {
 			
 			switch(choice) {
 			case 1:
-				dispenseBeverage("코카콜라", 1300, cokeStock);
+				dispenseBeverage("스프라이트", 1200, spriteStock);
 				break;
 			case 2:
-				dispenseBeverage("스프라이트", 1200, spriteStock);
+				dispenseBeverage("코카콜라", 1300, cokeStock);
 				break;
 			case 3:
 				dispenseBeverage("환타", 1000, fantaStock);
