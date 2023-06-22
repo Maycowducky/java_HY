@@ -1,8 +1,3 @@
-package day16.homework;
-
-import java.util.Scanner;
-
-public class BeverageMachineEx {
 		/* 음료수를 뽑는 자판기 프로그램을 작성하세요.
 		 * 단, 음료수 자판기에 음료수는 사이다, 콜라, 환타가 고정이라고 가정.
 		 * 메뉴를 선택하면 음료수와 잔액을 출력.
@@ -22,111 +17,159 @@ public class BeverageMachineEx {
 		 * 금액이 부족합니다. [금액이 부족한 경우]
 		 * 잔돈 얼마가 나옵니다.
 		 */
-		private static int cash;
-		private static int spriteStock, cokeStock, fantaStock;
-		
-		public static void main(String[] args) {
-			cash = 30000;
-			spriteStock = 15;
-			cokeStock = 15;
-			fantaStock = 15;
-			
-			Scanner sc = new Scanner(System.in);
-			int choice;
-			do {
-				printMenu();
-				System.out.print("상품 선택: ");
-				choice = sc.nextInt();
-				
-				switch(choice) {
-				case 1:
-					insertCash(sc);
-					break;
-				case 2:
-					selectMenu(sc);
-					break;
-				case 3:
-					stock();
-					break;
-				case 4:
-					System.out.println("프로그램 종료!");
-					break;
-				default:
-					System.out.println("잘못된 선택. 다시 시도해주세요.");
-				}
-			}while (choice != 4);
-			sc.close();
+	package day16.homework;
 
-		} 
-		private static void printMenu() {
-			System.out.println("======메  뉴======");
+	import java.util.Scanner;
+
+	import day16.homework.machine.vo.Beverage;
+
+	public class BeverageMachineEx {
+
+		private Scanner sc = new Scanner(System.in);
+		private Beverage list[] = new Beverage[3];
+		
+		private int money;//자판기에 있는 금액
+		
+		private final static int SPRITE = 0;
+		private final static int COKE = 1;
+		private final static int FANTA = 2;
+		private final static int EXIT = 4;
+		
+		public BeverageMachineEx() {
+			list[COKE] = new Beverage("콜라", 1200, 10);
+			list[SPRITE] = new Beverage("사이다", 1100, 10);
+			list[FANTA] = new Beverage("환타", 1000, 10);
+		}
+		
+		public void run() {
+			int menu;
+			do {
+				//메뉴 출력
+				printMenu();
+				//메뉴 선택
+				menu = sc.nextInt();
+				System.out.println("============");
+				
+				//메뉴에 따른 기능 실행
+				runMenu(menu);
+			}while(menu != EXIT);
+		}
+
+		private void runMenu(int menu) {
+			switch(menu) {
+			case 1:
+				insertCoin();
+				break;
+			case 2:
+				selectBeverage();
+				break;
+			case 3:
+				insertBeverage();
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("잘못된 메뉴!");	
+			}
+			
+		}
+
+		private void insertBeverage() {
+			System.out.println("1. 사이다");
+			System.out.println("2. 콜라");
+			System.out.println("3. 환타");
+			System.out.print("음료 선택 : ");
+			int selectBeverage = sc.nextInt() - 1;
+			System.out.print("수량 : ");
+			int amount = sc.nextInt();
+			switch (selectBeverage) {
+			case COKE:
+			case SPRITE:
+			case FANTA:
+				store(selectBeverage, amount);
+				break;
+			default:
+				System.out.println("잘못 선택!");
+				return;
+			}
+		}
+
+		private void store(int selectBeverage, int amount) {
+			if(amount < 0) {
+				System.out.println("수량 오류!");
+				return;
+			}
+			int remainAmount = list[selectBeverage].getAmount();
+			list[selectBeverage].setAmount(remainAmount+amount);
+			System.out.println("입고 완료!");
+			
+		}
+
+		private void selectBeverage() {
+			System.out.println("1. 사이다 : " + list[SPRITE].getPrice());
+			System.out.println("2. 콜라  : " + list[COKE].getPrice());
+			System.out.println("3. 환타  : " + list[FANTA].getPrice());
+			System.out.print("음료 선택 : ");
+			int selectBeverage = sc.nextInt() - 1;
+			switch (selectBeverage) {
+			case COKE:
+			case SPRITE:
+			case FANTA:
+				generate(selectBeverage);
+				break;
+			default:
+				System.out.println("잘못 선택!");
+				return;
+			}
+		}
+
+		private void generate(int beverage) {
+			int amount = list[beverage].getAmount();
+			if(amount<0) {
+				System.out.println("제고 없음!");
+				return;
+			}
+			int money =list[beverage].getPrice(); 
+			if(this.money < money) {
+				System.out.println("금액 부족!");
+				return;
+			}
+			
+			list[beverage].setAmount(amount-1);
+			this.money -= money;
+			
+			System.out.println(getBeverage(beverage)+"가 나옴");
+			System.out.println("거스름돈 : " + this.money);
+			this.money = 0;
+		}
+		private String getBeverage(int beverage) {
+			switch(beverage) {
+			case SPRITE: return "사이다";
+			case COKE: return "콜라";
+			case FANTA: return "환타";
+			default: return "없음";
+			}
+		}
+		private void insertCoin() {
+			System.out.print("금액 투입 : ");
+			int money = sc.nextInt();
+			this.money += money;
+			
+		}
+
+		private void printMenu() {
+			System.out.println("============");
+			System.out.println("금액 : " + money);
+			System.out.println("============");
+			System.out.println("메뉴");
 			System.out.println("1. 금액 투입");
 			System.out.println("2. 메뉴 선택");
 			System.out.println("3. 제품 입고");
 			System.out.println("4. 프로그램 종료");
-			System.out.println("=================");
-			
-		}
-		private static void insertCash(Scanner sc) {
-			System.out.print("금액 입력: ");
-			int amount = sc.nextInt();
-			
-			if(amount > 0) {
-				cash += amount;
-				System.out.println(amount + "won");
-				System.out.println(cash + "won 남았습니다.");
-			}else {
-				System.out.println("잔액이 부족합니다. 다시 시도해주세요.");
-			}
-		}
-		private static void selectMenu(Scanner sc) {
-			if(cash <= 0) {
-				System.out.println("잔액이 부족합니다. 동전을 투입해주세요.");
-				return;
-			}
-			System.out.println("===========메뉴============");
-			System.out.println("1. 스프라이트(1200won)");
-			System.out.println("2. 코카콜라(1300won)");
-			System.out.println("3. 환타(1000won)");
-			System.out.println("==========================");
-			
-			System.out.print("메뉴 선택: ");
-			int choice = sc.nextInt();
-			
-			switch(choice) {
-			case 1:
-				dispenseBeverage("스프라이트", 1200, spriteStock);
-				break;
-			case 2:
-				dispenseBeverage("코카콜라", 1300, cokeStock);
-				break;
-			case 3:
-				dispenseBeverage("환타", 1000, fantaStock);
-				break;
-			default:
-				System.out.println("없는 번호 입니다. 다른 번호 선택해주세요.");
-			}
-			
-		}
-		private static void dispenseBeverage(String string, int i, int cokeStock2) {
-			if(stock <= 0) {
-				System.out.print("재고가 없습니다: " + beverage);
-				return;
-			}
-			if(cash >= price) {
-				System.out.print("음료가 나오고 있습니다: ");
-				cash -= price;
-				System.out.println("잔돈:" + cash + "won");
-				stock--;
-			}else {
-				System.out.println("잔액이 부족합니다. 현금을 투입해주세요.");
-			}
-		}
-		private static void stock() {
-			System.out.println("===========재 고============");
-			System.out.println("스프라이트: 25");
-			System.out.println("코카콜라: 25");
-			System.out.println("환타: 25");
+			System.out.print("메뉴 선택 : ");
 		}
 	}
+
+
+
 
