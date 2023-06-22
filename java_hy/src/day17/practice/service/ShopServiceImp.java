@@ -130,9 +130,13 @@ public class ShopServiceImp implements ShopService  {
 		sellProduct.setAmount(amount);
 		Sales sales = new Sales(customerList[customerIndex], sellProduct);
 		
+		//판매된 제품의 재고량을 수정
+		list[productIndex].release(amount);
+		
 		//판매리스트에 판매 정보를 추가
 		salesHistory[salesCount] = sales;
 		return salesCount+1;
+		
 	}
 
 	private int indexOf(Customer[] customerList, int customerCount, String phoneNumber) {
