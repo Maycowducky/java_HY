@@ -58,9 +58,6 @@ public class BeverageMachineEx {
 			sc.close();
 
 		} 
-		private static void stock() {
-		
-		}
 		private static void printMenu() {
 			System.out.println("======메  뉴======");
 			System.out.println("1. 금액 투입");
@@ -112,7 +109,24 @@ public class BeverageMachineEx {
 			
 		}
 		private static void dispenseBeverage(String string, int i, int cokeStock2) {
-			
+			if(stock <= 0) {
+				System.out.print("재고가 없습니다: " + beverage);
+				return;
+			}
+			if(cash >= price) {
+				System.out.print("음료가 나오고 있습니다: ");
+				cash -= price;
+				System.out.println("잔돈:" + cash + "won");
+				stock--;
+			}else {
+				System.out.println("잔액이 부족합니다. 현금을 투입해주세요.");
+			}
+		}
+		private static void stock() {
+			System.out.println("===========재 고============");
+			System.out.println("스프라이트: 25");
+			System.out.println("코카콜라: 25");
+			System.out.println("환타: 25");
 		}
 	}
 
