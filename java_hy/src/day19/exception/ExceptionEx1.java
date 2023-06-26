@@ -23,5 +23,7 @@ class A implements Cloneable {
 	public Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}
-	
+	public void test() /*throws ArithmeticException*/{
+		System.out.println(1/0);
+	}
 }
