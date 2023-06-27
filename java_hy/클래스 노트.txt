@@ -7,7 +7,7 @@
 이름 			→ String name
 주민번호 			→ String residentNum 000101-3123456
 학년 			→ int grade
-반 			→ int classNum
+반 				→ int classNum
 번호 			→ int number
 나이 			→ 필요없음
 생일 			→ 필요없음
@@ -37,17 +37,17 @@
 솔력을 올림
 자동차 색생을 검은색
 
-자동차 			→ 클래스
-속력을 올림 		→ 메서드 
-자동차 색상 		→ 멤버변수
+자동차 					→ 클래스
+속력을 올림 				→ 메서드 
+자동차 색상 				→ 멤버변수
 공장에서 막 나온 
-자동차 			→ 생성자
+자동차 					→ 생성자
 
-Car 			→ 자동차
-String name;		→ 차명
+Car 					→ 자동차
+String name;			→ 차명
 String company; 		→ 제조사
-int year; 			→ 연식
-int speed; 		→ 속력
-char gear; 		→ P: 주차 R: 후진 D: 주행 N: 중립
-boolean power; 		→ 전원
+int year; 				→ 연식
+int speed; 				→ 속력
+char gear; 				→ P: 주차 R: 후진 D: 주행 N: 중립
+boolean power; 			→ 전원
 
