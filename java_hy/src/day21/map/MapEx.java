@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class MapEX {
+public class MapEx {
 
 	public static void main(String[] args) {
 		// Map을 배열처럼 사용하는 예제
