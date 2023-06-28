@@ -1,6 +1,6 @@
 package day20.homework.vocabulary.run;
 
-import day13.homework.controller.VocabularyNoteController;
+import day20.homework.vocabulary.controller.VocabularyNoteController;
 
 public class Run {
 
