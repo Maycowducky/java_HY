@@ -43,7 +43,6 @@ public class Word{
 	 * 메서드명 : addMeaning
 	 */
 	public void addMeaning(String meaning) {
-		//다 차는 경우가 없음
 		this.meanings.add(meaning);
 	}
 	/**뜻을 제거하고 제거 여부를 알려주는 메서드
