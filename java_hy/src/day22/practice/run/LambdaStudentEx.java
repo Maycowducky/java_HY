@@ -1,8 +1,7 @@
 package day22.practice.run;
 
 
-import day22.practice.controller.StudentManager;
-import day22.practice.controller.StudentManager2;
+import day22.practice.controller.StudentManager3;
 
 public class LambdaStudentEx {
 
@@ -14,7 +13,7 @@ public class LambdaStudentEx {
 		 * 4. 종료
 		 */
 		
-		StudentManager2 sm = new StudentManager2();
+		StudentManager3 sm = new StudentManager3();
 		sm.run();
 		
 		
