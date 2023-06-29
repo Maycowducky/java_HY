@@ -17,8 +17,12 @@ public class LambdaEx1 {
 			return num1 >= num2 ? num1 : num2;
 		};
 		System.out.println(b.getMax(10, 20));
+		
+		InterfaceA c = (num1, num2)-> num1 >= num2 ? num1 : num2;
+		System.out.println(c.getMax(10, 20));
 	}
 
+		
 }
 interface InterfaceA{
 	int getMax(int num1, int num2);
