@@ -1,4 +1,4 @@
-package day22.homework.manager.student;
+package day22.homework.manager.student.run;
 
 public class HighSchoolStudentManagement {
 
