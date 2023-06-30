@@ -1,14 +1,13 @@
-package day22.practice.controller;
+package day22.practice.student.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-import day22.practice.vo.Student;
+import day22.practice.student.vo.Student;
 
-public class StudentManager3 implements Program {
+public class StudentManager2 implements Program {
 	
 	private List<Student> list = Arrays.asList(
 			new Student(1, 1, 1, "Hong"),
@@ -46,33 +45,17 @@ public class StudentManager3 implements Program {
 
 	@Override
 	public void runMenu(int menu) {
-	Stream<Student> stream = list.stream();
+	
 		switch(menu) {
 		case 1:
-			stream.forEach(std->System.out.println(std));
+			print(s->true);
 			break;
 		case 2:
 			//검색할 학년 입력
 			System.out.print("grade: ");
 			final int grade1 = sc.nextInt();
-			stream
-			/* filter는 매개변수로 Predicate 인터페이스의 객체가 필요
-			 * Predicate를 구현한 익명클래스를 람다식으로 만든 후에 객체를 생성해서 전달
-			 * std는 매개변수 이름이기 때문에 다른이름으로 수정해도 됨
-			 */
-			.filter(std-> std.getGrade() == grade1)
-			//람다식을 안배웠다면 filter에 있는 매개변수는 위와 아래가 같은 동작
-			/*.filter(new Predicate<Student>() {
-			
-				@Override
-				public boolean test(Student t) {
-					return t.getGrade() == grade1;
-				}
-			})*/
-			.forEach(std->System.out.println(std));
-			/* Consumer 인터페이스 forEach
-			 * 
-			 */
+			final int fGrade = grade1;
+			print(s->s.getGrade() == fGrade);
 			break;
 		case 3:
 			//검색할 학년, 반, 번호를 입력
@@ -82,9 +65,7 @@ public class StudentManager3 implements Program {
 			final int classNum2 = sc.nextInt();
 			System.out.print("Number: ");
 			final int num2 = sc.nextInt();
-			stream
-			.filter(std -> std.equals(new Student(grade2, classNum2, num2, null)))
-			.forEach(std->System.out.println(std));
+			print(s->s.equals(new Student(grade2, classNum2, num2, "")));
 			break;
 		case 4:
 			break;
