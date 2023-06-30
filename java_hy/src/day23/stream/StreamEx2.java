@@ -1,6 +1,5 @@
 package day23.stream;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
