@@ -1,4 +1,4 @@
-package day22.practice.controller2;
+package day22.practice.phone.controller;
 
 public interface Program {
 	void run();
