@@ -26,7 +26,7 @@ public class PhoneBook {
 	public boolean updateName(String name, String updateName) {
 		//name과 일치하는 전화번호를 찾는다
 		//전화번호부에 수정할 이름에 해당하는 전화번호가 어디에 있는지 확인
-		int index = list.indexOf(new PhoneNumber(updateName,""));
+		int index = list.indexOf(new PhoneNumber(name,""));
 		//없으면 수정이 안됨 → 메서드를 종료
 		if(index == -1) {
 			return false;
@@ -79,23 +79,29 @@ public class PhoneBook {
 	}
 	//전화번호 수정 : 이름, 번호
 	public boolean update(String name, String updateName, String number) {
-		
+		PhoneNumber pn = new PhoneNumber(name, number);
 		//name을 이용하여 전화번호부 검색
-		
+		int index = list.indexOf(new PhoneNumber(name, number));
 		//없으면 수정 실패
-		
+		if(index == -1) {
+			return false;
+		}
 		//number가 전화번호 패턴에 안맞으면 실패
-		
+		if(!PhoneNumber.checkNumber(number)) {
+			return false;
+		}
 		//기존에 있는 전화번호를 삭제
-		
+		list.remove(index);
 		//updateName과 number를 이용하여 전화번호 객체를 생성한 후 추가
-		
-		
-		
+		pn.setName(updateName);
+		list.add(pn);
 		return true;
 	}
 	//전화번호 삭제
-	
+	public boolean delete(String name) {
+		//name으로 PhoneNumber 객체 생성 후 삭제 요청
+		return list.remove(new PhoneNumber(name, ""));
+	}
 	//전화번호 출력
 	public void print(Predicate<PhoneNumber> p) {
 		for(PhoneNumber pn : list) {
