@@ -22,9 +22,12 @@ public class StreamEx2 {
 			char ch[] = new char[10];
 			int len;
 			while((len = fr.read(ch)) != -1) {
+				
 				for(int i = 0; i < len; i++) {
 					System.out.print(ch[i]);
-				}
+			}
+				//배열을[1024] 충분하게 설정후 아래와 같이 출력
+				//System.out.print(ch);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found!");
