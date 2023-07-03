@@ -11,7 +11,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-public class Student {
+public class Subject {
 	//모든 학생들에게 있는 공통적인 속성(대학생, 초,중,고등학생 포함)
 	@Getter@Setter
 	private String name;//이름
@@ -80,7 +80,7 @@ public class Student {
 		return year - myYear;
 	}
 
-	public Student(String name, String residentNumber) {
+	public Subject(String name, String residentNumber) {
 		this.name = name;
 		//주민번호로 생일, 나이까지 계산히기 위해 setter를 호출
 		setResidentNumber(residentNumber);
