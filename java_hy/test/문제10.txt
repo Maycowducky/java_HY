@@ -1,0 +1,22 @@
+public class Test10 {
+
+	public static void main(String[] args) {
+		PhoneNumber pn1 = new PhoneNumber("Hong", null);
+		PhoneNumber pn2 = new PhoneNumber();
+	}
+
+}
+
+class PhoneNumber{
+	private String name, number;
+	
+	public PhoneNumber(String name, String number) {
+		this.name = name;
+		this.number = number;
+	}
+	@Override
+	public String toString(String str) {
+		str = "이름 : " + name + ",번호 : " + number;
+		return str;
+	}
+}

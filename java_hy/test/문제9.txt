@@ -1,0 +1,11 @@
+public class Test9 {
+
+	public static void main(String[] args) {
+		//0부터 차례대로 저장하는 예제
+		int [] arr;
+		for(int i = 0; arr.length; i++) {
+			arr[i] = i;
+		}
+	}
+
+}
