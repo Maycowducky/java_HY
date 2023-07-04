@@ -16,6 +16,7 @@ public class StudentController3 {
 
 	private Scanner sc = new Scanner(System.in);
 	private List<Student> list= new ArrayList<Student>();
+	private StudentController3 sc3= new StudentController3();
 	
 	public void run() {
 		int menu;
@@ -76,26 +77,22 @@ public class StudentController3 {
 			System.out.println(tmp2);
 		}
 	}
-	@Override
 	public void load() {
-		try(FileInputStream fis = new FileInputStream("phone_book.txt");
+		try(FileInputStream fis = new FileInputStream("Student.txt");
 			ObjectInputStream ois = new ObjectInputStream(fis)){
 
-			pb = (PhoneBook)ois.readObject();
+			sc3 = (StudentController3)ois.readObject();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();}
 		}
 		
-
-	@Override
 	public void save() {
-		try(FileOutputStream fos = new FileOutputStream("phone_book.txt");
+		try(FileOutputStream fos = new FileOutputStream("Student.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos)){
-			oos.writeObject(pb);
+			oos.WriteObject(sc3);
 		} catch (IOException e) {
 			e.printStackTrace();
 			}
