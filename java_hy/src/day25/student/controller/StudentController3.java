@@ -1,6 +1,8 @@
 package day25.student.controller;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,39 +10,66 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import day23.homework.phone.vo.PhoneBook;
-import day25.student.vo.Student;
-
-public class StudentController3 {
-
-	private Scanner sc = new Scanner(System.in);
-	private List<Student> list= new ArrayList<Student>();
-	private StudentController3 sc3= new StudentController3();
-	
+@@ -14,7 +21,8 @@ public class StudentController3 {
 	public void run() {
+
 		int menu;
+
+		String fileName = "src/day25/student/student.txt";
+		load(fileName);
 		do {
 			//메뉴 출력
 			printMenu();
-			//메뉴 선택(메뉴를 입력받음): Scanner 필요
-			menu = sc.nextInt();
-			//선택된 메뉴에 따른 기능을 실행
+@@ -24,8 +32,40 @@ public void run() {
 			runMenu(menu);
+
 		}while(menu != 3);
+		save(fileName);
 		sc.close();
 	}
-	private void printMenu() {
-		//메뉴 출력
-		System.out.println("메뉴");
-		System.out.println("1. 학생 등록");
-		System.out.println("2. 학생 확인");
-		System.out.println("3. 학생 등록");
-		System.out.print("메뉴 선택: ");
+	private void save(String fileName) {
+		//학생 정보를 저장 => 리스트 => 하나씩 꺼내서 저장
+		//저장 => OutputStream
+		//객체단위로 저장 => ObjectOutputStream
+		try(FileOutputStream fos = new FileOutputStream(fileName);
+			ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				for(Student tmp : list) {
+					oos.writeObject(tmp);
+				}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	private void load(String fileName) {
+		try(ObjectInputStream ois 
+			= new ObjectInputStream(new FileInputStream(fileName))){
+			while(true) {
+				Student tmp = (Student)ois.readObject();
+				list.add(tmp);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			//ObjectInputStream을 이용하여 객체단위로 읽어올 때 클래스가 Serializable인터페이스를 구현하지 않으면 발생 
+			System.out.println("Stduent 클래스를 찾을 수 없습니다.");
+		} 
+	}
+	private void printMenu() {
+		System.out.println("메뉴");
+		System.out.println("1. 학생등록");
+		System.out.println("2. 학생확인");
+		System.out.println("3. 종료");
+		System.out.print("메뉴 선택 : ");
+	}
+	
 	private void runMenu(int menu) {
 		switch(menu) {
 		case 1:
+			//학생정보 입력
 			insertStudent();
 			break;
 		case 2:
@@ -52,19 +81,19 @@ public class StudentController3 {
 		default:
 		}
 	}
+	
 	public void insertStudent() {
 		String num, name, major;
 		Student tmp;
-		//학생정보 입력
 		//학번(문자열, 공백이 없는)
-		System.out.println("학번: ");
+		System.out.print("학번 : ");
 		num = sc.next();
 		//이름(문자열, 공백이 있는)
-		System.out.println("이름: ");
 		sc.nextLine();
+		System.out.print("이름 : ");
 		name = sc.nextLine();
-		System.out.println("전공: ");
-		//과(문자열,공백이 있는)
+		//과(문자열, 공백이 있는)
+		System.out.print("전공 : ");
 		major = sc.nextLine();
 		//학생정보 리스트에 저장
 		//입력한 정보를 이용하여 학생 객체를 생성
@@ -72,30 +101,10 @@ public class StudentController3 {
 		//리스트에 학생 객체를 추가
 		list.add(tmp);
 	}
+	
 	public void print() {
 		for(Student tmp2 : list) {
 			System.out.println(tmp2);
 		}
 	}
-	public void load() {
-		try(FileInputStream fis = new FileInputStream("Student.txt");
-			ObjectInputStream ois = new ObjectInputStream(fis)){
-
-			sc3 = (StudentController3)ois.readObject();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();}
-		}
-		
-	public void save() {
-		try(FileOutputStream fos = new FileOutputStream("Student.txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fos)){
-			oos.WriteObject(sc3);
-		} catch (IOException e) {
-			e.printStackTrace();
-			}
-		}
-		
-	}
+}
