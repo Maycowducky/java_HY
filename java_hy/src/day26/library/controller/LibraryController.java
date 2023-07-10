@@ -16,17 +16,19 @@ import day26.library.vo.Book;
 import day26.library.vo.LoanBrowsing;
 
 public class LibraryController {
-
+	
 	private Scanner sc = new Scanner(System.in);
 	//도서 리스트
 	List<Book> bookList = new ArrayList<>();
 	//대출 열람 리스트
 	List<LoanBrowsing> loanList = new ArrayList<>();
-
+	
 	public void run() {
 		int menu;
 		String bookFileName = "src/day26/library/book.txt";
+		String loanFileName = "src/day26/library/loan.txt";
 		loadBook(bookFileName);
+		loadLoan(loanFileName);
 		do {
 			//메뉴 출력
 			System.out.println("=============");
@@ -36,12 +38,42 @@ public class LibraryController {
 			//선택된 메뉴에 따른 기능을 실행
 			runMenu(menu);
 			System.out.println("=============");
-
+			
 		}while(menu != 4);
 		saveBook(bookFileName);
+		saveLoan(loanFileName);
 		sc.close();
 	}
 
+	private void saveLoan(String fileName) {
+		try(FileOutputStream fos = new FileOutputStream(fileName);
+			ObjectOutputStream oos = new ObjectOutputStream(fos)){
+				for(LoanBrowsing tmp : loanList) {
+					oos.writeObject(tmp);
+				}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private void loadLoan(String fileName) {
+		try(ObjectInputStream ois 
+			= new ObjectInputStream(new FileInputStream(fileName))){
+			while(true) {
+				LoanBrowsing tmp = (LoanBrowsing)ois.readObject();
+				loanList.add(tmp);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("불러올 파일이 없습니다.");
+		} catch (EOFException e) {
+			System.out.println("불러오기 완료!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			//ObjectInputStream을 이용하여 객체단위로 읽어올 때 클래스가 Serializable인터페이스를 구현하지 않으면 발생 
+			System.out.println("LoanBrowsing 클래스를 찾을 수 없습니다.");
+		} 
+	}
+	
 	private void saveBook(String fileName) {
 		try(FileOutputStream fos = new FileOutputStream(fileName);
 			ObjectOutputStream oos = new ObjectOutputStream(fos)){
@@ -52,7 +84,7 @@ public class LibraryController {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void loadBook(String fileName) {
 		try(ObjectInputStream ois 
 			= new ObjectInputStream(new FileInputStream(fileName))){
@@ -73,7 +105,7 @@ public class LibraryController {
 	}
 
 	private void runMenu(int menu) {
-
+		
 		switch(menu) {
 		case 1:
 			insertBook();
@@ -90,12 +122,33 @@ public class LibraryController {
 		default:
 			System.out.println("잘못된 메뉴 선택!");
 		}
-
+		
 	}
 
 	private void retrunBook() {
-		// TODO Auto-generated method stub
-
+		//엔터 처리
+		sc.nextLine();
+		//반납도서 번호를 입력
+		System.out.print("도서 번호 : ");
+		String num = sc.nextLine();
+		//대출한 도서가 아니면 반납을 X
+		int index = bookList.indexOf(new Book(num, null, null, null));
+		if(index == -1) {
+			System.out.println("대출한 도서가 아닙니다.");
+			return;
+		}
+		//맞으면 반납
+		//반납한 도서의 상태를 대출 가능으로 수정
+		Book returnBook = bookList.get(index);
+		returnBook.returnBook();
+		
+		//대출열람 리스트에서 대출한 도서에 반납일을 오늘날짜로 수정
+		//반납한 도서의 대출 열람을 찾아야 함.
+		int lbIndex = loanList.lastIndexOf(new LoanBrowsing(returnBook, null, 14));
+		LoanBrowsing tmpLb = loanList.get(lbIndex);
+		tmpLb.setReturnDate(new Date());
+		System.out.println("대출일 : " + tmpLb.getLoanDateStr());
+		System.out.println("반납일 : " + tmpLb.getReturnDateStr());
 	}
 
 	private void loanBook() {
@@ -122,7 +175,7 @@ public class LibraryController {
 		sc.nextLine();//이전에 입력한 엔터 처리
 		System.out.print("도서 번호 : ");
 		String num = sc.nextLine();
-
+		
 		//대출을 신청
 		//도서 번호가 올바른지 확인
 		//번호에 맞는 도서가 있는지 확인
@@ -151,6 +204,7 @@ public class LibraryController {
 		//대출일을 출력
 		System.out.println("대출일 : " + lb.getLoanDateStr());
 		//반납예정일 출력
+		System.out.println("반납일 : " + lb.getEstimatedDateStr());
 	}
 
 	private void insertBook() {
@@ -164,10 +218,16 @@ public class LibraryController {
 		String author = sc.nextLine();
 		System.out.print("ISBN    : ");
 		String isbn = sc.nextLine();
-
+		
 		//입력 정보를 이용하여 도서 객체를 생성
 		Book book = new Book(num, title, author, isbn);
-
+		
+		//도서 번호 중복 체크
+		if(bookList.contains(book)) {
+			System.out.println("이미 등록된 도서 번호입니다. 확인해주세요.");
+			return;
+		}
+		
 		//도서 리스트에 도서 객체를 추가
 		bookList.add(book);
 	}
@@ -181,5 +241,5 @@ public class LibraryController {
 		System.out.print("메뉴 선택 : ");
 	}
 
-
+	
 }
