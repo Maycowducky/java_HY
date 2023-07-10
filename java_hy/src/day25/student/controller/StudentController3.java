@@ -10,19 +10,27 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-@@ -14,7 +21,8 @@ public class StudentController3 {
+
+import day25.student.vo.Student;
+
+public class StudentController3 {
+
+	private Scanner sc = new Scanner(System.in);
+	private List<Student> list = new ArrayList<Student>();
+	
 	public void run() {
-
+		
 		int menu;
-
 		String fileName = "src/day25/student/student.txt";
 		load(fileName);
 		do {
 			//메뉴 출력
 			printMenu();
-@@ -24,8 +32,40 @@ public void run() {
+			//메뉴 선택(메뉴를 입력받음) : Scanner 필요
+			menu = sc.nextInt();
+			//선택된 메뉴에 따른 기능을 실행
 			runMenu(menu);
-
+			
 		}while(menu != 3);
 		save(fileName);
 		sc.close();
