@@ -29,3 +29,6 @@ java_hy/src/.project
 I'mCoding/.classpath
 I'mCoding/.project
 .metadata/
+/bin/
+.classpath
+.project
