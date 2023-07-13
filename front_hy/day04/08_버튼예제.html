@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버튼 예제</title>
+	<style>
+		.container {
+			position: relative;
+			width: 600px; height: 100px;
+			border: 2px solid black;
+		}
+		.center-box{
+			position: absolute;
+			top: 50%;
+			left: 50%;  transform: translate(-50%, -50%);
+			width: 50%; height: 80px; background-color: white;
+			border: 2px solid black;		
+			text-align: center;
+		}
+		.circle{
+			position: absolute;
+			top: 50%; left: 0;
+			transform: translateY(-50%);
+			width: 80px; height: 80px; border-radius: 50%; background-color: violet;
+		}
+		.rightbutton-circle{
+			position: absolute;
+			top: 50%; right: 0;
+			transform: translateY(-50%);
+			width: 80px; height: 80px; border-radius: 50%; background-color: violet;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="circle"></div>
+		<div class="center-box"><span></span></div>
+		<div class="rightbutton-circle"></div>
+</div>
+</body>
+</html>
