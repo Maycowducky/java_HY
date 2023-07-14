@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>서브 메뉴 예제</title>
+	<style>
+		*{ padding: 0; margin: 0; color: black;}
+		ul{ list-style: none;}
+		a { text-decoration: none;}
+		.menu-list{
+			width: 300px; height: 50px; 
+		}
+		.menu-item{
+			width: 100px; height: 100%; float: left;
+		}
+		.menu-link{
+			width: 100%; height: 100%; display: block;
+			text-align: center; line-height: 44px; 
+			font-size: 24px; font-weight: bold;
+			border: 3px solid black; box-sizing: border-box;
+		}
+		.menu-item~.menu-item{
+			margin-left: -3px;
+		}
+		.submenu-link{
+			height: 50px; width: 100%; display: block; line-height: 44px;
+			border: 3px solid black; text-align: center; font-size: 24px;
+			box-sizing: border-box;
+		}
+		.submenu-list{
+			/* 서브메뉴1-1과 메뉴1 사이의 두꺼운 테두리 안 보이게 하기 위해*/
+			margin-top: -3px; 
+			display: none; 
+		}
+		.submenu-list:hover{
+			background-color: violet;
+		}
+		.submenu-item+.submenu-item{
+			/* 서브1-1과 서브1-2 사이의 두꺼운 테두리 안 보이게 하기 위해*/
+			margin-top: -3px; 
+		}
+		.menu-item:hover .submenu-list{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="#" class="menu-link">과일</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">바나나</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">사과</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">딸기</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">동물</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">다람쥐</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">고양이</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">강아지</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">카페</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">아아</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">바떼</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">자에</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

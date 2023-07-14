@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .menu-container {
+            display: flex;
+        }
+        
+        .menu {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .menu-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .menu-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: none;
+        }
+        
+        .menu-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-item:hover {
+            background-color: #d3d3d3;
+        }
+        
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .menu-item:hover .submenu {
+            display: block;
+        }
+        
+        .submenu-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .submenu-item:hover {
+            background-color: #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu">
+            <div class="menu-header">Menu 1</div>
+            <ul class="menu-list">
+                <li class="menu-item">Menu Item 1
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 1 Item 1</li>
+                        <li class="submenu-item">Submenu 1 Item 2</li>
+                        <li class="submenu-item">Submenu 1 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 2
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 2 Item 1</li>
+                        <li class="submenu-item">Submenu 2 Item 2</li>
+                        <li class="submenu-item">Submenu 2 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 3
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 3 Item 1</li>
+                        <li class="submenu-item">Submenu 3 Item 2</li>
+                        <li class="submenu-item">Submenu 3 Item 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu">
+            <div class="menu-header">Menu 2</div>
+            <ul class="menu-list">
+                <li class="menu-item">Menu Item 1
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 4 Item 1</li>
+                        <li class="submenu-item">Submenu 4 Item 2</li>
+                        <li class="submenu-item">Submenu 4 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 2
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 5 Item 1</li>
+                        <li class="submenu-item">Submenu 5 Item 2</li>
+                        <li class="submenu-item">Submenu 5 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 3
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 6 Item 1</li>
+                        <li class="submenu-item">Submenu 6 Item 2</li>
+                        <li class="submenu-item">Submenu 6 Item 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="menu">
+            <div class="menu-header">Menu 3</div>
+            <ul class="menu-list">
+                <li class="menu-item">Menu Item 1
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 7 Item 1</li>
+                        <li class="submenu-item">Submenu 7 Item 2</li>
+                        <li class="submenu-item">Submenu 7 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 2
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 8 Item 1</li>
+                        <li class="submenu-item">Submenu 8 Item 2</li>
+                        <li class="submenu-item">Submenu 8 Item 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">Menu Item 3
+                    <ul class="submenu">
+                        <li class="submenu-item">Submenu 9 Item 1</li>
+                        <li class="submenu-item">Submenu 9 Item 2</li>
+                        <li class="submenu-item">Submenu 9 Item 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
