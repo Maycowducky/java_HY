@@ -4,6 +4,7 @@
 	font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif
 }
 a{ text-decoration: none;}
+
 body{
 	min-width: 1340px;
 }
@@ -17,15 +18,11 @@ header{
 	margin: 0 auto;/* 박스 가운데 정렬 */
 	position: relative;
 	padding: 64px 0 42px;
-	
-	/* 아래는 나중에 삭제할 속성  */
-	background-color: whitesmoke;
-	height: 200px;
 }
 /* 햄버거 메뉴 */
 #ham_menu{
 	position: absolute; top: 18px; left: -10px;
-	
+
 }
 #ham_menu .btn-ham{
 	padding: 10px; cursor: pointer;
@@ -52,7 +49,6 @@ header{
 	/* 좌우 가운데 정렬 */
 	left: 50%; transform: translateX(-50%);
 	border: 1px solid #03c75a; /* 네이버 기본 검색창 테두리 색, 특별한 날마다 다를 수 있음*/
-	border-color: #a3691b;
 	border-radius: 33px; top: 64px;
 
 }
@@ -65,9 +61,11 @@ header{
 #box_search .box-logo .link-logo>.img-link-logo{
 	width: 58px; height: 58px; display: block;
 }
+
 #box_search .box-search-input{
 	float: right; width: 623px;
 }
+
 /* 검색창 */
 #box_search .box-search-input .input-search{
 	padding: 17px 0; width: 480px; float: left;
@@ -111,6 +109,7 @@ header{
 #box_search .box-btns .btn-kbd:hover::before{
 	background-position: -270px -234px;
 }
+
 #box_search .box-btns .btn-autocomplete{
 	padding: 26px 6px; cursor: pointer; border: 0; outline: 0;
 	background-color: transparent; position: absolute;
@@ -121,6 +120,9 @@ header{
 	background-size: 422px 405px;
 	background-position: -412px -352px;
 	width: 10px; height: 6px; content: ''; display: block;
+}
+#box_search:hover{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
 }
 
 /* 메뉴 영역 */
@@ -194,24 +196,65 @@ header{
 	font-size: 14px; line-height: 20px; margin-top: 7px;
 	text-align: center;
 }
+/* 우측 상단 알림 */
+.box-notify{
+	position: absolute; top: 18px; right: -10px; width: 46px;
+}
+.box-notify .btn-notify{
+	padding: 10px; cursor: pointer; 
+	/* 버튼 기본 속성 제거 */
+	background-color: transparent; border: 0; outline: 0;
+}
+.box-notify .btn-notify::after{
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px; content: ''; display: block;
+	background-position: -364px -27px;
+	width: 26px; height: 26px; 
+	/* hover했을 때 배경 원이 알림이미지 위에 가는 것을 막기 위해 position을 relative */
+	position: relative;
+}
+/* 우측 상단 네이버 페이 */
+.box-pay{
+	position: absolute; top: 18px; right: 42px; width: 46px;
+}
+.box-pay .link-pay{
+	padding: 10px 8px; cursor: pointer; display: block;
+}
+.box-pay .link-pay::after{
+	background-image: url(../img/naver_icon.png);
+	background-size: 422px 405px; content: ''; display: block;
+	background-position: -31px -316px;
+	width: 30px; height: 26px; 
+	/* hover했을 때 배경 원이 알림이미지 위에 가는 것을 막기 위해 position을 relative */
+	position: relative;
+}
+/* hover하면 원 배경이 생기는 스타일 */
+.box-notify .btn-notify:hover::before,
+.box-pay .link-pay:hover::before{
+	content: ''; display: block; position: absolute; top: 1px; left: 1px;
+	width: 44px; height: 44px;	border-radius: 50%; 
+	background-color: #f5f7f8;
+}
 
 /* 컨텐츠 영역 */
 #container{
 	width : 1280px;
 	margin: 0 auto;/* 박스 가운데 정렬 */
-	
+
 	/* 아래는 나중에 삭제할 속성  */
-	background-color: whitesmoke;
+	background-color: red;
 	height: 500px;
 }
+
 /* 푸터 영역(회사 정보) */
 footer{
 	min-width: 1280px; /* 최소 너비로, 브라우저 작을때는 1280px, 클때는 100%*/
 	background-color: #f5f6f7;
-	
+
 	/* 아래는 나중에 삭제할 속성  */
 	height: 300px;
 }
+
 /* 공통 */
 fieldset{
 	border: 0;
