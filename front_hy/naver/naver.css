@@ -196,7 +196,7 @@ header{
 	background-position: -250px -135px;
 }
 .shortcut-area>.shortcut-list .link-service .name-service{
-	font-size: 14px; line-height: 20px; margin-top: 7px;
+	font-size: 14.7px; line-height: 20px; margin-top: 7px;
 	text-align: center;
 }
 /* 우측 상단 알림 */
@@ -267,6 +267,8 @@ header{
 #container .box-left .box-banner iframe{
 	width: 100%; height: 130px; 
 	background-color: gray; border-radius: 8px;
+	background-image: url(https://ssl.pstatic.net/melona/libs/1453/1453759/a7ef0711adfaf3a1dafc_20230713171015705_1.jpg);
+	background-size: 830px 130px;
 }
 /* 2번째 왼쪽 컨텐츠 : 뉴스 스탠드 */
 #container .box-left  .body-container{
@@ -673,13 +675,19 @@ header{
 #container .box-left .box-shopping .body-container .box-main-right .box-menu{
 	padding: 9px 9px 8px; font-size: 1.4rem; background-color: rgba(245, 248, 251, .6); position: relative;
 	margin-top: 11px;
-}
+} 
 #container .box-left .box-shopping .body-container .box-main-right .box-menu::before{
 	content: ''; position: absolute; top: 0; bottom: 0; left: 0; right: 0;
 	border: 1px solid rgba(0, 0, 0, .05); border-radius: inherit;
 }
 #container .box-left .box-shopping .body-container .box-main-right .link-quick-menu{
+	position: relative;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-quick-menu{
 	display: block; text-align: center;
+}
+#container .box-left .box-shopping .body-container .box-main-right .item-quick-menu{
+	width: 25%;
 }
 #container .box-left .box-shopping .body-container .box-main-right .img-quick-menu{
 	width: 32px; height: 32px; line-height: 32px; display: inline-block; position: relative;
@@ -690,8 +698,38 @@ header{
 	background-position: -34px 0px;
 	top: 50%; left: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px;
 }
+#container .box-left .box-shopping .body-container .box-main-right .item-quick-menu:nth-child(3) .img-quick-menu::before{
+	width: 32px; height: 32px; background-position: -34px -34px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .item-quick-menu:nth-child(4) .img-quick-menu::before{
+	width: 17px; height: 16px; background-position: -60px -68px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .item-quick-menu:nth-child(2) .img-quick-menu::before{
+	content: 'MY'; font-size: 1.2rem; background-image: none;
+}
 #container .box-left .box-shopping .body-container .box-main-right .text-quick-menu{
 	margin-top: 4px; font-size: 14px; line-height: 20px; color: #404040;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad{
+	margin-top: 11px; display: block;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad .box-ad-img{
+	width: 250px; height: 135px; overflow: hidden; display: block; position: relative; border-radius: 4px;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad .box-ad-img::after{
+	content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+	border: 1px solid rgba(0, 0, 0, .06);
+	border-radius: inherit;
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad .box-ad-img>img{
+	transition: transform .2s cubic-bezier(.165, .84, .44, 1);
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad .box-ad-img:hover>img{
+	transform: scale(1.03);
+}
+#container .box-left .box-shopping .body-container .box-main-right .link-ad .text-ad{
+	margin-top: 10px; line-height: 20px; text-align: center; overflow: hidden;
+	white-space: nowrap; text-overflow: ellipsis; font-size: 1.4rem;
 }
 /* 컨텐츠 오른쪽 영역 */
 #container .box-right{
