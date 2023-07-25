@@ -68,6 +68,10 @@
 				- 모든 항목이 같은 간격을 가지도록 배치
 			<stretch>
 				- 플렉스 항목의 높이를 늘려 교차축에 가득차게 배치
+		
+		<order>
+			- 플렉스 항목에 순서를 결정하는 속성
+			- 숫자가 낮을수록 앞으로 이동
 		*/
 
 		.flex-container{
@@ -91,7 +95,34 @@
 		.flex-container .box:nth-child(2n){
 			background-color: aqua; align-self: stretch;
 		}
-	</style>
+		.flex-container .box:nth-child(7){
+			order: -1;
+		}
+		.flex-container2{
+			border: 3px solid violet; display: flex;
+		}
+		.box2{
+			flex-basis: 200px; height: 50px; background-color: blueviolet;
+		}
+		.box2:nth-child(2n){
+			background-color: aliceblue;
+		}
+		.box2:nth-child(1){
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex: 1 1 200px;
+		}
+		.box2:nth-child(2){
+			flex-grow: 2;
+			flex-shrink: 1;
+			flex: 2 2 200px;
+		}
+		.box2:nth-child(3){
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex: 1 1 200px;
+		}
+		</style>
 </head>
 <body>
 	<div class="flex-container">
@@ -109,6 +140,11 @@
 		<div class="box">3</div>
 		<div class="box">4</div>
 		<div class="box">5</div>
+	</div>
+	<div class="flex-container2">
+		<div class="box2"></div>
+		<div class="box2"></div>
+		<div class="box2"></div>
 	</div>
 </body>
 </html>
