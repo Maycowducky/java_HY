@@ -86,7 +86,7 @@ header{
 	border: 0; outline: 0; background-color: transparent;
 }
 #box_search .box-search-input .btn-search .icon-search{
-	background-color: #a3691b; display: block;
+	background-color: #03c75a; display: block;
 }
 #box_search .box-search-input .btn-search .icon-search::before{
 	background-image: url(../img/naver_icon.png);
