@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>flex</title>
+	<style>
+		.container{
+			border: 3px solid blueviolet;
+			display: flex; width: 500px;
+		}
+		.box{
+			flex-basis: 200px; height: 50px; background-color: violet;
+			text-align: center; line-height: 50px; font-weight: bold;
+			
+		}
+		.box:nth-child(2n){
+			background-color: black; color: violet; 
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">메뉴1</div>
+		<div class="box">메뉴2</div>
+		<div class="box">메뉴3</div>
+	</div>
+</body>
+</html>
