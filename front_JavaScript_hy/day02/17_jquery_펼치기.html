@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>펼치기</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box {
+			height: 300px; background-color: #f0f0f0;
+		}
+		.btn{
+			width: 60px; height: 50px; border-radius: 40%;
+			border: 2px solid blueviolet; 
+			background-color: transparent;
+		}
+		
+	</style>
+</head>
+<body>
+	<button class="btn">메뉴</button>
+	<div class="box">
+		<ul>
+			<li class="item">항목1</li>
+			<li class="item">항목2</li>
+			<li class="item">항목3</li>
+		</ul>
+	</div>
+	<script>
+			$(".btn").click(function(){
+				const FOLD = '접기';
+				const UNFOLD = '펼치기';
+				$(".box").slideToggle();
+				// 현재 글자를 가져옴 : text(), this
+				let text = $(this).text();
+
+				//가져온 글자가 FOLD와 같으면 UNFOLD로, 다르면 FOLD로
+				//클릭 이벤트가 발생한 요소의 글자를 수정
+				/* if(text == FOLD){
+					text = UNFOLD;
+				} else{
+					text = FOLD;
+				}
+				$(this).text(text); */
+				text = text == FOLD ? UNFOLD : FOLD;
+				$(this).text(text);
+
+			});
+
+	</script>
+</body>
+</html>
