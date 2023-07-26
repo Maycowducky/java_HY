@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>타이머</title>
+	<style>
+		#box{
+			width: 400px; margin: 50px auto; border: solid 3px blueviolet;
+			text-align: center; line-height: 50px; height: 50px;
+			font-size: 30px; font-weight: bold;
+		}
+		.btn-start,
+		.btn-stop{
+			border: 2px solid blueviolet; font-weight: bold;
+			border-radius: 50%; height: 40px; background-color: transparent;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button class="btn-start">start</button>
+	<button class="btn-stop">stop</button>
+	<script>
+		// box에 시계가 동작되도록 코드를 작성하세요
+		// 1초마다 동작(테스트를 위해 0.01초마다 동작)
+		box.innerText = '00:00:00';
+		let hour = 0, minute = 0, second = 0;
+		let intervalId = null;
+
+		let btnStart = document.querySelector('.btn-start');
+			btnStart.addEventListener('click',()=>{
+				intervalId = start();
+		});
+		let btnStop = document.querySelector('.btn-stop');
+			btnStop.addEventListener('click',()=>{
+				stop(intervalId);
+			});
+		function start(){
+			return setInterval(function(){
+			second++;
+			if(second == 60){
+				minute++
+				second = 0;
+			}
+			if(minute == 60){
+				hour++;
+				minute = 0;
+			}
+			box.innerText = getTime(hour, minute, second);
+		}, 1000);
+		}
+		function stop(id){
+			clearInterval(id);
+		}
+		function getTime(hour, minute, second){
+			return ''+fillZero(hour)+ ':' + fillZero(minute)+ ':' + fillZero(second);
+		}
+		function fillZero(num){
+			return num < 10 ? '0'+num : num;
+		}
+	</script>
+</body>
+</html>
