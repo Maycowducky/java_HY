@@ -37,17 +37,15 @@
 		.box-page{
 			display: flex; justify-content: space-between;
 		}
-		.btn-prev, .btn-next{
+		.btn-prev,.btn-next{
 			width: 50px; height: 50px; border: 3px solid blueviolet;
 			text-align: center; line-height: 50px; text-decoration: none;
-			cursor: pointer; color: black; font-weight: bold;
-		}
-		.btn-next{
-			left: auto; right: 0;
+			color: black;
 		}
 		.box-page-num{
-			line-height: 56px; font-size: 24px; font-weight: bold; 
+			line-height: 56px; font-size: 24px; font-weight: bold;
 		}
+
 	</style>
 </head>
 <body>
@@ -75,7 +73,6 @@
 		<li class="item-box box2"></li>
 		<li class="item-box box3"></li>
 	</ul>
-	
 	<script>
 		$('.item-menu').click(function(){
 			// 박스
@@ -88,7 +85,7 @@
 			// $('.item-menu').first().click();
 			// 페이지 번호 변경
 			/* 
-			index(): 요소가 몇번째 요소인지를 알려줌
+			index() : 요소가 몇번재 요소인지를 알려줌. 0부터 시작
 			*/
 			page = $(this).index() + 1;
 			drawPage(page);
@@ -103,10 +100,11 @@
 			drawPage(page);
 		});
 		$('.btn-next').click(function(){
-			page == ++page == MAX_PAGE ? 1 : page;
+			page = ++page > MAX_PAGE ? 1 : page;
 			$('.item-menu').eq(page-1).click();
 			drawPage(page);
 		});
+
 		function drawPage(page){
 			$('.page-current').text(page);
 		}
