@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭 메뉴 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 500px; height: 500px;
+		}
+		.box1{background-color: aquamarine;}
+		.box2{background-color: blue;}
+		.box3{background-color: blueviolet;}
+	</style>
+</head>
+<body>
+	<button class="btn btn1" data-target=".box1">show()</button>
+	<button class="btn btn2" data-target=".box2">hide()</button>
+	<button class="btn btn3" data-target=".box3">toggle()</button>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+	<script>
+		$('.box').hide();
+
+		$('.btn').click(function(){
+			let target = $(this).attr('data-target');
+			$('.box').hide();
+			$(target).show();
+		});
+
+		/* 
+			$('.btn1').click(function(){
+			$('.box').hide();
+			$('.box1').show();
+		});
+		$('.btn2').click(function(){
+			$('.box2').show();
+			$('.box1').hide();
+			$('.box3').hide();
+		});
+		$('.btn3').click(function(){
+			$('.box3').show();
+			$('.box2').hide();
+			$('.box3').hide();
+		}); 
+		*/
+	</script>
+</body>
+</html>
