@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>롤링 예제</title>
 	<script src="../js/jquery.min.js"></script>
 	<style>
 		.box{
@@ -16,7 +16,7 @@
 		}
 		.list{
 			list-style: none; margin: 0; padding: 0;
-			width: 300%;
+			width: 300%; 
 		}
 		.list::after{
 			clear: both; content: ''; display: block;
@@ -25,14 +25,13 @@
 			height: 50px; background-color: yellow; width: 33.33%; float: left;
 		}
 		.box-btns{
-			position: absolute; top: 0; right: 0; bottom: 0; 
-			width: 100px; background-color: #fff; 
+			position: absolute; top: 0; right: 0; bottom: 0;
+			width: 100px; background-color: #fff;
 		}
 		.btn{
 			width: 50px; height: 50px; border-left: 3px solid black;
 			box-sizing: border-box; float: left; text-align: center;
 			text-decoration: none; color: #000; font-size: 30px; line-height: 44px;
-			cursor: pointer;
 		}
 		.bg-pink{ background: pink;}
 		.bg-orange{ background: orange;}
@@ -53,23 +52,21 @@
 		</div>
 	</div>
 	<script>
-		$('.btn-prev').click(moveToLeft);
+		
 		$('.box').hover(function(){
-			// 롤링 멈춤
+			//롤링을 멈춤
 			clearInterval(id);
 		}, function(){
-			// 롤링 시작
+			//롤링을 시작
 			id = rolling();
 		});
+
 		let id = rolling();
-	
+
 		function rolling(){
 			return setInterval(()=>{
-			if($('.item').is(':animated')){
-				return;
-			}
-			moveToLeft();
-		}, 1500);
+				moveToLeft();
+			}, 1500);
 		}
 		function moveToLeft(){
 			if($('.item').is(':animated')){
@@ -77,10 +74,10 @@
 			}
 			let width = $('.item').width();
 			$('.item')
-			.first()
-			.animate({'margin-left':`-${width}px`},1200, function(){
-				$(this).detach().appendTo('.list').removeAttr('style');
-			});
+				.first()
+				.animate({'margin-left':`-${width}px`},1200, function(){
+					$(this).detach().appendTo('.list').removeAttr('style');
+				});
 		}
 		function moveToRight(){
 			if($('.item').is(':animated')){
@@ -88,11 +85,11 @@
 			}
 			let width = $('.item').width();
 			$('.item')
-			.last()
-			.detach
-			.prependTo('.list')
-			.css('margin-left', `-${width}px`)
-			.animate({'margin-left':0},1200);
+				.last()
+				.detach()
+				.prependTo('.list')
+				.css('margin-left',`-${width}px`)
+				.animate({'margin-left':0},1200);
 		}
 	</script>
 </body>

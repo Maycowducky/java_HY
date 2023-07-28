@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>롤링 예제</title>
 	<script src="../js/jquery.min.js"></script>
 	<style>
 		.box{
@@ -13,7 +13,7 @@
 		}
 		.list{
 			list-style: none; margin: 0; padding: 0;
-			width: 300%;
+			width: 300%; 
 		}
 		.list::after{
 			clear: both; content: ''; display: block;
@@ -35,26 +35,27 @@
 	</div>
 	<script>
 		$('.box').hover(function(){
-			// 롤링 멈춤
+			//롤링을 멈춤
 			clearInterval(id);
 		}, function(){
-			// 롤링 시작
+			//롤링을 시작
 			id = rolling();
 		});
+
 		let id = rolling();
-	
+
 		function rolling(){
 			return setInterval(()=>{
-			if($('.item').is(':animated')){
-				return;
-			}
-			let width = $('.item').width();
-			$('.item')
-			.first()
-			.animate({'margin-left' : `-${width}px`},1200, function(){
-				$(this).detach().appendTo('.list').removeAttr('style');
-			});
-		}, 1500);
+				if($('.item').is(':animated')){
+					return;
+				}
+				let width = $('.item').width();
+				$('.item')
+					.first()
+					.animate({'margin-left':`-${width}px`},1200, function(){
+						$(this).detach().appendTo('.list').removeAttr('style');
+					});
+			}, 1500);
 		}
 	</script>
 </body>
