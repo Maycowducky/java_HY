@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입 페이지</title>
+	<script src="../js/jquery.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.container{
+			width: 300px; margin: 50px auto; background-color: #fff;
+			border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+		label{
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+		input{
+			width: 80%; padding: 8px; border: 1px solid dodgerblue;
+			border-radius: 3px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+		}
+		button{
+			width: 20%; padding: 10px; background-color: dodgerblue;
+			color: #fff; font-weight: bold; cursor: pointer;
+			border-radius: 3px; margin-top: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border: 0;
+		}
+		.message{
+			margin-top: 10px; text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>회원가입</h2>
+		<form class="signup">
+			<label for="username">아이디</label>
+			<input type="text" class="username" required>
+			<label for="password">비밀번호</label>
+			<input type="password" class="password" required>
+			<label for="passwordcheck">비밀번호 확인</label>
+			<input type="password" class="password" required>
+			<label for="email">이메일</label>
+			<input type="text" class="email" required>
+			<button class="submit">가입</button>
+		</form>
+		<div class="message"></div>
+	</div>
+	<script>
+		let regex = /\d{4,32}/
+		
+	
+		$(document).ready(function(){
+			{'.signup'}submit(function(event){
+				event.preventDefault();
+			});
+			$('.username').change(function(){
+			var username= $('.username').val();
+			var username= $('.email').val();
+			var username= $('.password').val();
+			if(regex.test(text)){
+				$('.box').text('정규표현식이 맞습니다.')
+			}else{
+				$('.box').text('숫자만 4~32자 입력하세요.')
+			}
+			});
+			$('.message').text('회원가입이 완료 되었습니다.');
+		});
+	</script>
+</body>
+</html>
