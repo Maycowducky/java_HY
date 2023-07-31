@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5_Form 추가양식</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>주문 내용</legend>
+            <ol>
+                <li>
+                    <label for="product">상품명</label>
+                    <input type="text" id="product" size="25">
+                </li>
+                <li>
+                    <label for="num">주문개수</label>
+                    <input type="number" id="num" min="1" max="3" value="1">
+                </li>
+            </ol>
+        </fieldset>
+        <button type="submit" value="등록">등록</button>
+    </form>
+</body>
+</html>
+
+<!-- HTML5 추가 입력 양식 -->
+<input type="range" [min="최소값" max="최대값" step="간격" value="초기값">
+    - type="number"만 필수 항목
+    - step : 짝수나 홀수처럼 특졍 숫자로 입력을 제한하려고 할 때 숫자의 간격을 지정. 기본값1

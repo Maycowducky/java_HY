@@ -1,0 +1,130 @@
+//HTML4
+
+<!-- 텍스트 입력 -->
+<input type="text">
+
+<!-- 패스워드 -->
+<input type="password">
+
+<!-- 체크박스 -->
+<input type="checkbox">
+
+<!-- 라디오 버튼 -->
+<input type="radio">
+
+<!-- 파일 선택 -->
+<input type="file">
+
+<!-- 전송 버튼 -->
+<input type="submit">
+
+//HTML5
+
+<!-- 이메일 주소 -->
+    - 텍스트 필드에 입력하던 것을 이메일 주소 필드로 세분화
+    - 사용자가 입력하는 단계에서 입력한 값이 이메일 주소인지 아닌지 확인
+    - '오페라' 브라우저에서 가장 정확하게 지원함
+<input type="email" name="" id="">
+
+<!-- 웹 주소 -->
+<input type="url" name="" id="">
+
+<!-- 숫자(스핀상자) -->
+<input:nuber></input:nuber>
+
+<!-- 숫자(슬라이드더) -->
+<input type="range" name="" id="">
+
+<!-- 날짜/시간 등 -->
+<input type="date" name="" id="">
+<input type="datetime" name="" id="">
+
+<!-- 검색 상자 -->
+<input type="search" name="" id="">
+
+<!-- 색상 -->
+<input type="color" name="" id="">
+
+<!-- 날짜 -->
+<input type="date" name="" id="">
+<!-- 월 -->
+<input type="month" name="" id="">
+<!-- 주 -->
+<input type="week" name="" id="">
+<!-- 시간 -->
+<input type="time" name="" id="">
+<!-- 날짜와 시간 (UTC 시간대)-->
+<input type="datetime" name="" id="">
+<!-- 날짜와 시간(로컬) -->
+<input type="datetime-local" name="" id="">
+<!-- 검색 상자 -->
+<input type="search" name="" id="">
+
+<!-- 자동 완성 제어 (autocomplete) -->
+<input type="text" autocomplete="on/off">
+    - 사용할 수 있는 값 : on off (기본값:on)
+    - 폼에서 개인 정보를 입력할 때 사용자가 (브라우저에서) 자동 완성 기능을 끄지 않더라도,
+    사이트 문서에서 직접 자동 완성 기능을 끌 수 있음
+<!-- autofocus 입력 필드에 커서 표시 -->
+<input type="text" autofocus>
+    - 페이지를 불러오자마자 입력 필드 안에 마우스 커서 표시
+
+<!-- list 사용 가능 값 제시 -->
+<datalist>
+    <option value="서버 값" label="사용자를 위한레이블"></option>
+    <option value="서버 값" label="사용자를 위한레이블"></option>
+    ...
+</datalist>
+
+예시:>
+<li>
+    <label for="prodid">색상</label>
+    <input type="text" id="id" list="mycolor">
+    <datalist id="mycolor">
+        <option value="black" label="검정색"></option>
+        <option value="white" label="하얀색"></option>
+        <option value="skyblue" label="하늘색"></option>
+    </datalist>
+</li>
+
+<!-- 입력값 제한 - min, max, maxLength, step -->
+min: 필드의 최소값
+max: 필드의 최대값
+maxLength: 입력할 수 있는 최대 문자 개수
+step: 범위 내의 숫자 간격
+
+<!-- placeholder 힌트 표시 -->
+    - 필드 안에 적당한 힌트 내용을 표시하고 있따가 클릭하면 내용이 사라짐.
+    <li>
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="8자 미만 공백 없이">
+    </li>
+    
+    <li>
+        <label for="email">이메일</label>
+        <input type="text" id="email" placeholder="example@domain.com">
+    </li>
+    
+    <li>
+        <label for="phone">전화번호</label>
+        <input type="text" id="phone" placeholder="010-1111-1111">
+    </li>
+    
+<!-- 필수 입력 필드 체크 required -->
+    - required="required" 라고 하거나 그냥 required라고만 해도 됨.
+    - hidden이나  image, button, submit, reset 유형에서는 사용할 수 없음.
+
+    <li>
+        <label for="name">이름</label>
+        <input type="text" id="name" placeholder="8자 미만 공백 없이" autofocus required>
+    </li>
+    
+    <li>
+        <label for="email">이메일</label>
+        <input type="text" id="email" placeholder="example@domain.com">
+    </li>
+    
+    <li>
+        <label for="phone">전화번호</label>
+        <input type="text" id="phone" placeholder="010-1111-1111">
+    </li>
