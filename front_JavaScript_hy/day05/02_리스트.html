@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+	
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="first-item">항목1</li>
+		<li>항목2</li>
+		<li>항목3</li>
+	</ul>
+	<button class="btn">항목1</button>
+	<script>
+		$('.btn').click(()=>$('li').first().css('background-color', 'yellow'));
+	</script>
+</body>
+</html>

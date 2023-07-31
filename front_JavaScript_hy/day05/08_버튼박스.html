@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 클릭</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 500px; height: 500px;
+		}
+		.btn{border: 2px solid rgba(32, 253, 69, 0.829); background-color: transparent; cursor: pointer;}
+		.box1{border: 3px solid powderblue;}
+		.box2{border: 3px solid  plum;}
+	</style>
+</head>
+<body>
+	<button class="btn btn1" data-target=".box1">1</button>
+	<button class="btn btn2" data-target=".box2">2</button>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<script>
+		$('.box').hide();
+
+		$('.btn').click(function(){
+			let target = $(this).attr('data-target');
+			$('.box').hide();
+			$(target).show();
+		});
+
+	</script>
+</body>
+</html>
