@@ -1,0 +1,102 @@
+/*
+물리적 설계
+1. DB(스키마)를 생성
+2. 테이블(릴레이션)을 생성
+3. 데이터를 추가
+*/
+/*
+SQL: Structured Query Language
+DDL(데이터 정의어): Data Definition Language : create alter drop rename truncate
+	- 테이블/DB를 추가, 수정, 삭제
+    - 테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 (생성, 변경, 삭제, 이름변경) 데이터 구조와 관련된 명령어들을 말함.
+DML(데이터 조작어): Data Definition Language : select insert update delete
+	- 데이터 추가, 수정, 조회
+    - 데이터베이스에 들어 있는 데이터를 조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE 라고도 함
+    - 데이터베이스의 테이블에 들어 있는 데이터에 변형을 가하는 종류(데이터 삽입, 수정, 삭제)의 명령어들을 말함
+DCL(데이터 제어어): Data Control Language : grant revoke
+	- 계정에 사용권한을 부여, 회수
+    - 데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어들을 말함.
+TCL(트랜잭션 제어어): Transaction Control Language : commit rollback savepoint
+	- 작업을 묶어서 DML 결과를 작업단위 별로 묶어서 제어
+    - 논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말함.
+*/
+/*
+DDL
+	- create    : 테이블/DB를 생성
+    - alter     : 테이블/DB를 수정
+    - drop      : 테이블/DB를 삭제
+    - truncate  : 테이블를 초기화
+*/
+/*
+DB 생성 : MYSQL에서는 DB와 스키마가 같은 걸로 인식
+create schema DB명;
+create database DB명;
+drop schema DB명;
+drop database DB명;
+
+if not exists DB명 : DB명이 존재하지 않을 때 작업
+if exists DB명 : DB명이 존재할 때 작업
+*/
+
+create schema if not exists course;
+# drop schema if exists course;
+
+/*
+use DB명 : Db명을 선택. Workbench에서는 해당 DB를 더블클릭하면 글자가 두껍게 변함
+*/
+use course;
+/*
+테이블 생성 
+- auto_increment는 기본키에만 설정할 수 있다.
+- 테이블당 최대 1개만 설정
+- default는 not null인 경우 기본값을 설정할 때 사용
+- check는 데이터가 추가될 때 조건이 맞지 않는 경우 추가되게 하지 않을 때 사용
+create table 테이블명(
+	속성명1 타입 [default 값] [not null | null] [auto_increment],
+	속성명2 타입 [default 값] [not null | null],
+    primary key(속성명), # 기본키 설정
+    foreign key(속성명) references 테이블명(속성명),
+    constraint 제약조건명 check(조건) 
+    # 제약조건 생략가능 check만 사용 가능
+    check(조건)
+);
+*/
+# 대학생(학번, 이름, 학과)
+create table if not exists student(
+	num char(10) not null,
+    name varchar(20) not null,
+    major varchar(20) not null,
+    primary key (num)
+);
+# 과목(과목코드, 과목명, 학점, 시수)
+# 과목코드 앞 3자리는 종류, 뒤 3자리는 숫자 MSC001
+create table if not exists subject(
+	code char(6) not null,
+    title varchar(20) not null,
+    point int not null default 0,
+    time int not null default 0,
+    # constraint pk_code primary key(code) 제약 코드 사용 가능 
+    primary key (code)
+);
+# 수강(수강번호, 과목코드(FK), 학번(FK), 강의실 교수 시간표 연도 학기)
+# `` : 테이블 이름이 TOD인 경우 반드시 사용.
+# ``.`` : DB가 선택/선택 안되더라도 해당 DB에 테이블 생성 가능
+create table if not exists `course`.`course`(
+	num int not null auto_increment,
+    subject_code char(6) not null,
+    student_num char(10) not null,
+    room varchar(20) not null default '',
+    professor_name varchar(20) not null default '',
+    schedule varchar(20) not null default '',
+    year int not null,
+    semester varchar(10) not null default '1',
+    primary key (num),
+    foreign key (subject_code) references subject(code),
+    foreign key (student_num) references student(num)
+);
+
+
+
+
+
+
