@@ -8,4 +8,5 @@ truncate table 테이블명 : 테이블 데이터를 초기화
 set foreign_key_checks = 0;
 truncate table student;
 truncate table subject;
+truncate table course;
 set foreign_key_checks = 1;
