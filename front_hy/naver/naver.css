@@ -79,6 +79,17 @@ header{
 #box_search .box-search-input .input-search::placeholder{
 	color: #f5f6f7;
 }
+.special-logo{
+	position: absolute;
+	top: 0; right: 0; left: 0; z-index: -10; overflow: hidden; height: 261px;
+}
+.special-logo .event-bg{
+	position: absolute; top: 0; bottom: 0; left: 50%; width: 1280px;
+	transform: translateX(-50%);
+}
+.special-logo .event-bg .event-bg-wrap{
+	position: absolute; transform: scale(0.5); transform-origin: left top; top: 0px; left: 0px;
+}
 /* 검색버튼 */
 #box_search .box-search-input .btn-search{
 	padding: 17px 27px 16px 10px; cursor: pointer;
