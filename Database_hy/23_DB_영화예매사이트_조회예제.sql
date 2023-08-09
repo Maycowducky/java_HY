@@ -38,3 +38,22 @@ FROM
 WHERE
     MO_TITLE = '오펜하이머'
 GROUP BY FI_STATE;
+
+-- ABC회원의 예매 내역을 조회하는 쿼리(영화명, 시간, 좌석명)
+SELECT 
+    MO_TITLE AS 영화제목, MS_START_TIME AS 상영시간, SE_NAME AS 좌석
+FROM
+    RESERVATION
+        JOIN
+    RESERVATION_LIST ON RL_RV_NUM = RV_NUM
+        JOIN
+    SEAT ON RL_SE_NUM = SE_NUM
+		JOIN
+	MOVIE_SCHEDULE ON MS_NUM = RV_MS_NUM
+		JOIN
+	MOVIE ON MO_NUM = MS_MO_NUM
+WHERE RV_ME_ID = 'abc123';
+-- ABC회원의 예매 내역을 조회하는 쿼리 (영화명, 시간, 성인 X명, 청소년 X명)
+
+    
+-- CGV강남 영화관에서 콘크리트 유토피아 20:50에 예매가능한 좌석을 조회하는 쿼리 (OUTER JOIN)
