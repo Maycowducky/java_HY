@@ -69,7 +69,7 @@ GROUP BY RV_NUM;
 -- CGV강남 영화관에서 콘크리트 유토피아 20:50에 예매가능한 좌석을 조회하는 쿼리 (OUTER JOIN)
 
 SELECT 
-    SE_NAME AS 좌석
+    SE_NAME
 FROM
     SEAT
 		JOIN
