@@ -21,12 +21,11 @@ public class MemberController {
 	public void run() {
 		int menu;
 		final int EXIT = 3;
-		
 		do {
 			printMenu();
 			menu = sc.nextInt();
 			runMenu(menu);
-		}while(menu != EXIT);
+		}while(menu != EXIT);		
 	}
 
 	private void runMenu(int menu) {
@@ -40,42 +39,47 @@ public class MemberController {
 		case 3:
 			break;
 		default:
-			System.out.println("[잘못된 메뉴 입니다.]");
+			System.out.println("[잘못된 메뉴입니다.]");
+		}
+	}
+
+	private void withdraw() {
+		System.out.print("ID : ");
+		String id = sc.next();
+		System.out.print("PW : ");
+		String pw = sc.next();
+		if(memberService.withdraw(id, pw)) {
+			System.out.println("[회원탈퇴 성공!]");
+		}else {
+			System.out.println("[회원탈퇴 실패!]");
 		}
 		
 	}
 
-	private void withdraw() {
-		System.out.print("ID : "); 
-		String id = sc.next(); 
-		System.out.print("PW : ");
-		String pw = sc.next();
-		if(memberService.withdraw(id, pw)) {
-			System.out.println("[회원가입 성공!]");
-		} else {
-			System.out.println("[회원가입 실패!]");
-		}
-	}
-
 	private void printMenu() {
-		System.out.println("=======회원 메뉴======");
-		System.out.println("1. 회원 가입");
-		System.out.println("2. 회원 탈퇴");
-		System.out.println("3. 뒤로 가기");
-		System.out.print("메뉴 선택: ");
+		System.out.println("======회원메뉴======");
+		System.out.println("1.회원가입");
+		System.out.println("2.회원탈퇴");
+		System.out.println("3.뒤로가기");
+		System.out.println("==================");
+		System.out.print("메뉴 선택 : ");
+		
 	}
-
+	
 	private void signup() {
-		System.out.print("ID : "); 
-		String id = sc.next(); 
+		System.out.print("ID : ");
+		String id = sc.next();
 		System.out.print("PW : ");
 		String pw = sc.next();
 		if(memberService.signup(id, pw)) {
 			System.out.println("[회원가입 성공!]");
-		} else {
+		}else {
 			System.out.println("[회원가입 실패!]");
 		}
-		
-		
 	}
 }
+
+
+
+
+

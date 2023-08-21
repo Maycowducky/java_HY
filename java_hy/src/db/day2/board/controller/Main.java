@@ -1,11 +1,13 @@
 package db.day2.board.controller;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Main {
 
-	private static Connection con = null;
+	private static Connection con = null; 
 	private static MemberController memberController;
 	private static BoardController boardController;
 	
@@ -15,8 +17,7 @@ public class Main {
 		String dbId = "root";
 		String dbPw = "root";
 		
-		 
-		con = connect(url, dbId, dbPw); 
+		con = connect(url, dbId, dbPw);
 		if(con != null) {
 			System.out.println("[연결 성공!]");
 		}else {
@@ -29,22 +30,19 @@ public class Main {
 		final int EXIT = 3;
 		memberController = new MemberController(con, sc);
 		boardController = new BoardController(con, sc);
-		
 		do {
-			// 메뉴 출력
+			//메뉴 출력
 			printMenu();
-			// 메뉴 선택
+			//메뉴 선택
 			menu = sc.nextInt();
-			// 메뉴 실행
+			//메뉴 실행
 			runMenu(menu);
 		}while(menu != EXIT);
 		
-		
 		sc.close();
 		close(con);
-		
 	}
-
+	
 	private static void runMenu(int menu) {
 		
 		switch(menu) {
@@ -58,17 +56,18 @@ public class Main {
 			System.out.println("[프로그램을 종료합니다.]");
 			break;
 		default:
-			System.out.println("[잘못된 메뉴 입니다.]");
+			System.out.println("[잘못된 메뉴입니다.]");
 		}
+		
 	}
 
 	private static void printMenu() {
-		System.out.println("=======메뉴======");
+		System.out.println("=======메뉴=======");
 		System.out.println("1. 회원 메뉴");
 		System.out.println("2. 게시판 메뉴");
 		System.out.println("3. 종료");
 		System.out.println("=================");
-		System.out.print("메뉴 선택: ");
+		System.out.print("메뉴 선택 : ");
 	}
 
 	private static Connection connect(String url, String id, String pw) {
@@ -80,12 +79,11 @@ public class Main {
 	}
 	private static void close(Connection con) {
 		try {
-			// 연결한 connection을 닫아줌
-			if(con != null && con.isClosed()) {
+			//연결한 connection을 닫아줌
+			if(con != null && !con.isClosed()) {
 				con.close();
 			}
-		} catch (SQLException e) {
-			
-		}
+		} catch (SQLException e) {}
 	}
+	
 }

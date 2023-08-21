@@ -8,17 +8,17 @@ import java.sql.SQLException;
 import db.day2.board.vo.MemberVO;
 
 public class MemberMapper implements MemberDAO {
-	
-	private Connection con;
 
+	private Connection con;
+	
 	public MemberMapper(Connection con) {
 		this.con = con;
 	}
 
 	@Override
 	public MemberVO getMember(String id) {
-		//쿼리 생성
-		String sql = "select me_id, me_pw, me_board_count from member where me_id = ?";
+		//쿼리를 생성
+		String sql ="select me_id, me_pw, me_board_count from member where me_id = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, id);
@@ -37,34 +37,33 @@ public class MemberMapper implements MemberDAO {
 
 	@Override
 	public void insertMember(String id, String pw) {
-		String sql = "insert into member(me_id, me_pw) values(?,?)";
+		String sql = "insert into member(me_id,me_pw) values(?,?)";
+		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			// ?설정
+			//?설정
 			ps.setString(1, id);
 			ps.setString(2, pw);
 			//실행
 			ps.executeUpdate();
-			
 		} catch (SQLException e) {
+
 		}
-		
 	}
 
 	@Override
 	public void deleteMember(String id) {
 		String sql = "delete from member where me_id = ?";
+		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			// ?설정
+			//?설정
 			ps.setString(1, id);
 			//실행
 			ps.executeUpdate();
-			
 		} catch (SQLException e) {
+
 		}
-		
-		
 	}
 
 }
