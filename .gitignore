@@ -30,10 +30,6 @@ I'mCoding/.classpath
 I'mCoding/.project
 .metadata/
 /bin/
-.gitignore
 .classpath
 .project
-.settings/
-meta-inf/
-*.launch
 *.mp4
