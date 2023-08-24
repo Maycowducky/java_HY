@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.app.vo.MemberVO;
 
-public interface MemberDAO {
+public interface MemberDAO { 
 
 	MemberVO selectMember(@Param("me_id")String me_id);
 

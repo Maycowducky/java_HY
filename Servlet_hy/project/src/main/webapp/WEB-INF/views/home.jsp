@@ -11,7 +11,7 @@
 	<h2>반갑습니다.</h2>
 	<!-- 서버에서 보낸 msg를 jsp에서 출력 -->
 	<h3><%=request.getAttribute("msg")%></h3>
-	<%
+	<%  
 		for (int i = 0; i < 5; i++){
 	%>	
 		<h4><%=i%></h4>

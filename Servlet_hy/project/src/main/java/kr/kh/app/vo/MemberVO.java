@@ -1,6 +1,6 @@
 package kr.kh.app.vo;
 
-import lombok.Data;
+import lombok.Data; 
 
 @Data
 public class MemberVO {

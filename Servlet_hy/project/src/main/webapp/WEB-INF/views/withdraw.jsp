@@ -11,7 +11,7 @@
 	<form action="<%=request.getContextPath()%>/withdraw" method="post">
 		<input type="text" name="id"> <br>
 		<input type="password" name="pw"> <br>
-		<button>탈퇴하기</button>
+		<button>탈퇴하기</button> 
 	</form>
 	
 	<script>

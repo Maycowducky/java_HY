@@ -40,7 +40,7 @@ public class MemberServiceImp implements MemberService{
 		if(dbMember != null) {
 			return false;
 		}
-		memberDao.insertMember(member);
+		memberDao.insertMember(member); 
 		return true;
 	}
 
