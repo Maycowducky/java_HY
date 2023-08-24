@@ -10,4 +10,10 @@ public interface BoardService {
 
 	ArrayList<BoardVO> getBoardList();
 
+	BoardVO getBoard(int bo_num);
+
+	boolean deleteBoard(int bo_num);
+
+	boolean updateBoard(BoardVO board);
+
 }

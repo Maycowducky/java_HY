@@ -12,4 +12,10 @@ public interface BoardDAO {
 
 	ArrayList<BoardVO> selectBoardList();
 
+	BoardVO selectBoard(@Param("bo_num")int bo_num);
+
+	int deleteBoard(@Param("bo_num")int bo_num);
+
+	int updateBoard(@Param("board")BoardVO board);
+
 }

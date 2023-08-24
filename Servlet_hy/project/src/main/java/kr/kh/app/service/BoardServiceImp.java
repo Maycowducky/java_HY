@@ -52,4 +52,22 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.selectBoardList();
 	}
 
+	@Override
+	public BoardVO getBoard(int bo_num) {
+		return boardDao.selectBoard(bo_num);
+	}
+
+	@Override
+	public boolean deleteBoard(int bo_num) {
+		return boardDao.deleteBoard(bo_num) != 0;
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board) {
+		if(board == null || board.getBo_title() == null) {
+			return false;
+		}
+		return boardDao.updateBoard(board) != 0;
+	}
+
 }

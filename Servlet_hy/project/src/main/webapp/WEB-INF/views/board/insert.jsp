@@ -15,20 +15,19 @@
 		<button>등록</button>
 	</form>
 	<script>
-		<%
+		<% 
 			Boolean result = (Boolean)request.getAttribute("ok");
-			
-			if(result != null && result) {
+			if(result != null && result){
 		%>
-				alert('게시글 등록 성공!')
-				location.href= '<c:url value="/list/"';
+			alert('게시글 등록 성공!');
+			location.href = '<c:url value="/list"/>';
 		<%
-			} else if(result != null && !result) {
+			}else if(result != null && !result){
 		%>
-				alert('게시글 등록 실패!')
+			alert('게시글 등록 실패!')
 		<%
 			}
-		%> 
+		%>
 	</script>
 </body>
 </html>
