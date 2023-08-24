@@ -2,40 +2,36 @@ package kr.kh.app.controller;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import kr.kh.app.service.BoardService;
+import kr.kh.app.service.BoardServiceImp;
+import kr.kh.app.vo.BoardVO;
 
-public class Home extends HttpServlet {
+public class BoardInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public Home() {
+	
+    private BoardService boardService = new BoardServiceImp();
+    
+    public BoardInsert() {
         super();
-        
     }
 
-	public void init(ServletConfig config) throws ServletException {
-		System.out.println("init 실행");
-	}
-
-	public void destroy() {
-		System.out.println("destroy 실행");
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 서버에서 화면에게 데이터를 전송
-		request.setAttribute("msg", "Hello");
-		
-		//미리 만들어 놓은 home.jsp와 연결
-		request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 화면에서 보낸 id를 가져옴
+		String title = request.getParameter("title");
 		String id = request.getParameter("id");
-		System.out.println(id);
+		BoardVO board = new BoardVO(title, id);
+		boolean ok = false;
+		if(boardService.insertBoard(board)) {
+			ok = true;
+		}
+		request.setAttribute("ok", ok);
 		doGet(request, response);
 	}
 

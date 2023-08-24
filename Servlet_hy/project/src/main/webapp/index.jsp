@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
-<!--<a href="<%=request.getContextPath()%>/signup">회원 가입</a>  -->
+<!--<a href="/signup">회원 가입</a>  -->
 <a href="<%=request.getContextPath()%>/signup">회원 가입</a>
 <a href="<%=request.getContextPath()%>/withdraw">회원 탈퇴</a>
 <a href="<%=request.getContextPath()%>/list">게시글 조회</a>

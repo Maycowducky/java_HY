@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 탈퇴</title>
 </head>
 <body>
 	<h1>회원 탈퇴</h1>
