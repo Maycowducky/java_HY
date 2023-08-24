@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
+<title>Index</title> 
 </head>
 <body>
 <!--<a href="/signup">회원 가입</a>  -->
