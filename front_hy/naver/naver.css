@@ -786,7 +786,69 @@ header{
 	width: 1px; height: 12px; background-color: #d3d5d7;
 	margin: 4px 12px 0; vertical-align: top;
 }
-
+/* 오른쪽 2번째 기상특보 컨텐츠 */
+.weather-issue-banner{
+	background-color: #fff;
+	position: relative;
+	border-radius: 8px;
+	box-shadow: 0 0 0 1px #e3e5e8, 0 1px 2px 0 rgba(0, 0, 0, .04);
+	box-sizing: border-box;
+}
+.weather-issue-content{
+	margin-top: 16px;
+}
+.weather-issue-content .issue-banner{
+	padding: 8px 18px;
+}
+.weather-issue-content .issue-banner .issue-rolling{
+	overflow: hidden; height: 40px;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group{
+	display: flex; line-height: 24px;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group .banner-left{
+	flex: 1; min-width: 0;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group .banner-left .issue-typebreaking{
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	white-space: nowrap; 
+	display: block; 
+	padding: 8px 0;
+	color: inherit;
+    text-decoration: none;
+	cursor: pointer;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group .banner-left .issue-typebreaking .issue-tag{
+	background-color: #e64746; color: #fff;
+	position: relative;
+    display: inline-block;
+    min-width: 40px;
+    margin-right: 8px;
+    padding: 0 9px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group .banner-left .issue-typebreaking .issue-tag::before{
+	content: ''; 
+	display: block; 
+	position: absolute; 
+	top: 0; bottom: 0; left: 0; right: 0; 
+	border: 1px solid #ebebeb; border-radius: inherit;
+}
+.weather-issue-content .issue-banner .issue-rolling .issue-banner-group .banner-left .issue-typebreaking .issue-text{
+	font-weight: bold;     
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    padding: 8px 0;
+}
 /* 푸터 영역(회사 정보) */
 footer{
 	min-width: 1280px; /* 최소 너비로, 브라우저 작을때는 1280px, 클때는 100%*/
