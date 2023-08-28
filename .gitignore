@@ -93,5 +93,5 @@ atlassian-ide-plugin.xml
 
 cached-antora-playbook.yml
 
-/target
-/test
+target/
+test/
