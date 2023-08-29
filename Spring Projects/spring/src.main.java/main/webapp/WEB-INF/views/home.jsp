@@ -28,13 +28,14 @@
 	      <a class="nav-link" href="<c:url value='/member/login'/>">로그인</a>
 	    </li>
     </c:if>
-    <c:if test="${user != null }">
-	    <li class="nav-item">
-	      <a class="nav-link" href="<c:url value='/member/logout'/>">로그아웃</a>
-	    </li>
+    <c:if test="${user != null}">
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value='/member/logout'/>">로그아웃</a>
+    </li>
     </c:if>
   </ul>
 </nav>
+
 
 
 </body>

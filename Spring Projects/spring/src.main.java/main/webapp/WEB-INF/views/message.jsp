@@ -8,12 +8,8 @@
 </head>
 <body>
 	<script type="text/javascript">
-	let msg = ${msg};
-	
-	if(msg != null | msg.msg != null){
-		alert(msg.msg);
-	}
-	location.href = '<c:url value="/"/>' + msg.url;
+		alert('${msg}');
+		location.href = '<c:url value="${url}"/>'
 	</script>
 </body>
 </html>

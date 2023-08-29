@@ -9,18 +9,18 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import kr.kh.spring.vo.MemberVO;
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public void postHandle(
-		HttpServletRequest request,
-		HttpServletResponse respose,
+		HttpServletRequest request,	
+		HttpServletResponse response,
 		Object handler,
 		ModelAndView mv) {
 		
 		MemberVO user = (MemberVO)mv.getModel().get("user");
 		
-		if(user != null ) {
+		if(user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 		}
