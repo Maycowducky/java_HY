@@ -58,12 +58,13 @@ public class MemberServiceImp implements MemberService {
 			return null;
 		}
 		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
-		// 가입된 아이디가 아니면
+		//가입된 아이디가 아니면
 		if(dbMember == null) {
 			return null;
 		}
 		//비번확인
-		if( passwordEncoder.matches(member.getMe_pw(), dbMember.getMe_pw())){
+		//matches(암호화안된문자열, 암호화된문자열)
+		if(passwordEncoder.matches(member.getMe_pw(), dbMember.getMe_pw())) {
 			return dbMember;
 		}
 		return null;
