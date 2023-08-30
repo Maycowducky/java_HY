@@ -55,7 +55,7 @@ public class MemberController {
 		return "message";
 	}
 	@GetMapping("/member/logout")
-	public String memberLogout(HttpServletRequest request, Model model) {
+	public String memberLogout(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg = new Message("/", null);
