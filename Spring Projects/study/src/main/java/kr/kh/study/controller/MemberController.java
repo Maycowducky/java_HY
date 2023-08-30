@@ -60,5 +60,15 @@ public class MemberController {
 		
 		return "util/message";
 	}
-
+	@GetMapping("/member/logout")
+	public String memberLogout(Model model, HttpSession session) {
+		String msg="로그아웃 성공!" , url="/";
+		
+		session.removeAttribute("user");
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		
+		return "/util/message";
+	}
 }
