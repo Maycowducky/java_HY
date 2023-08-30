@@ -1,0 +1,77 @@
+- 회원가입 기능을 구현
+1.회원 가입 링크를 추가
+ - home.jsp
+
+2. 링크를 통해 이동했을 때 회원가입 페이지가 보이게 작업
+ - 컨트롤러
+   - 메소드 추가
+   - url: /member/signup
+   - method : get
+   - 화면 : /member/singup
+ - jsp를 추가(회원가입 화면)
+   - member폴더 안에 singup.jsp를 추가
+   - 회원가입 화면을 구성 : form태그
+      - method : post
+      - url : /member/signup
+
+3. 회원 정보를 입력 후 회원가입버튼을 눌렀을 때 회원가입이 진행되게 작업
+ - 컨트롤러
+   - 메서드 추가
+   - url: /member/signup
+   - method : post
+   - 화면 : util/message
+ - message.jsp를 추가
+   - 서버에서 msg와 url을 보내주면 msg를 alert로 띄우고 url로 이동하는 작업 
+ - 컨트롤러
+   - 화면에서 보내준 회원 정보를 확인(sysout으로 콘솔에 출력)
+   - 서비스에게 회원 정보를 주면서 가입하라고 요청하고, 성공하면 msg에 회원가입 성공, url을 /으로 하고
+     실패하면 msg에 회원가입 실패, url은 /member/signup
+
+ - 서비스/서비스임플
+   - 메서드 추가
+      - 매개변수 체크
+      - 아이디 중복 확인
+         - 다오에게 아이디를 주면서 회원 정보를 가져오라고 시킴
+         - 가져온 회원 정보가 null이 아니면 중복
+      - 다오에게 회원 정보를 주면서 가입하라고 시킴
+ - 다오/매퍼 
+   - 메서드 추가 및 쿼리를 구현
+   - 매퍼
+      - select 태그m resultType을 확인
+ - jsp를 추가
+
+- 비밀번호 암호화
+1. 의존성 추가
+그룹아이디 : org.springframework.security
+아티펙트아이디: spring-security-web
+버전 : ${springframework-version}
+그룹아이디 : org.springframework.security
+아티펙트아이디: spring-security-core
+버전 : ${springframework-version}
+그룹아이디 : org.springframework.security
+아티펙트아이디: spring-security-config
+버전 : ${springframework-version}
+그룹아이디 : org.springframework.security
+아티펙트아이디: spring-security-taglibs
+버전 : ${springframework-version}
+
+2. security-context.xml를 생성
+ - 컨트롤 + N > Spring bean configuration file 선택 후 생성
+ - namespace 탭 선택 > security 체크박스를 체크 
+ - 객체를 추가
+ <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
+/>
+
+3. security-context.xml 파일을 읽어 올 수 있도록 web.xml을 수정
+ - context-param태그 안에 param-value태그에 /WEB-INF/spring/security-context.xml을 추가
+
+4. 서비스 임플
+ - 멤버변수로 비밀번호 암호화 객체를 추가
+@Autowired
+BCryptPasswordEncoder passwordEncoder;
+ - 기존 회원가입하는 코드 앞에 비밀번호 암호화 하는 코드 추가
+ - encode(문자열) : 문자열을 복호화가 불가능한 암호화된 문자열을 만들어주는 메서드 
+
+
+
+

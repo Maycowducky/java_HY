@@ -2,11 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" 
 	pageEncoding="utf-8" %>
 <!doctype html>
-<html>
+<html lang="ko">
 <head>
 	<title>스프링</title>
 </head>
 <body>
-	<a href="<c:url value='/member/signup'/>">회원가입</a>
+	<script type="text/javascript">
+	let msg = ${msg};
+	
+	if(msg != null | msg.msg != null){
+		alert(msg.msg);
+	}
+	location.href = '<c:url value="/"/>' + msg.url;
+	</script>
 </body>
 </html>
