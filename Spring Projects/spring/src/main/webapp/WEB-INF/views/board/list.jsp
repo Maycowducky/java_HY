@@ -4,7 +4,23 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	
+	<style type="text/css">
+		.table tbody tr:nth-of-type(2n+1) td{
+			background: #b8daff
+		}
+		.table tbody tr:nth-of-type(2n+2) td{
+			background: #c3e6cb
+		}
+		.table tbody tr:nth-of-type(2n+3) td{
+			background: #f5c6cb
+		}
+		.table tbody tr:nth-of-type(2n+4) td{
+			background: #bee5eb
+		}
+		.table tbody tr:nth-of-type(2n+5) td{
+			background: #ffeeba
+		}
+	</style>
 </head>
 <body>
 	<h1 class="mt-4">게시판</h1>
@@ -12,64 +28,45 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>조회수</th>
+        <th>추천/비추천</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Default</td>
-        <td>Defaultson</td>
-        <td>def@somemail.com</td>
-      </tr>      
-      <tr class="table-primary">
-        <td>Primary</td>
-        <td>Joe</td>
-        <td>joe@example.com</td>
-      </tr>
-      <tr class="table-success">
-        <td>Success</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr class="table-danger">
-        <td>Danger</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr class="table-info">
-        <td>Info</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr class="table-warning">
-        <td>Warning</td>
-        <td>Refs</td>
-        <td>bo@example.com</td>
-      </tr>
-      <tr class="table-active">
-        <td>Active</td>
-        <td>Activeson</td>
-        <td>act@example.com</td>
-      </tr>
-      <tr class="table-secondary">
-        <td>Secondary</td>
-        <td>Secondson</td>
-        <td>sec@example.com</td>
-      </tr>
-      <tr class="table-light">
-        <td>Light</td>
-        <td>Angie</td>
-        <td>angie@example.com</td>
-      </tr>
-      <tr class="table-dark text-dark">
-        <td>Dark</td>
-        <td>Bo</td>
-        <td>bo@example.com</td>
-      </tr>
+    	<c:forEach items="${list }" var="board">
+	      <tr class="table-primary">
+	        <td>${board.bo_num }</td>
+	        <td>
+	        	<a href="">${board.bo_title}(${board.bo_comment })</a>
+	        </td>
+	        <td>${board.bo_me_id }</td>
+	        <td>${board.bo_views }</td>
+	        <td>${board.bo_up }/${board.bo_down }</td>
+	      </tr>
+      </c:forEach>
     </tbody>
   </table>
+  <ul class="pagination justify-content-center">
+	<c:if test="${pm.prev}">
+		<li class="page-item">
+			<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
+	    </li>
+	</c:if>
+	
+	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+	    <li class="page-item <c:if test='${pm.cri.page == i}'>active</c:if>">
+	    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(i)}'/>">${i}</a>
+	    </li>
+	</c:forEach>
+	<c:if test="${pm.next}">
+	    <li class="page-item">
+	    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.endPage+1)}'/>">다음</a>
+	    </li>
+	</c:if>
+  </ul>
   <a class="btn btn-outline-danger" href="<c:url value='/board/insert'/>">글쓰기</a>
 </body>
 </html>
