@@ -24,7 +24,7 @@ public class MemberController {
 	@RequestMapping(value="/member/signup", method=RequestMethod.GET)
 	public String signup() {
 		
-		return "member/signup";
+		return "/member/signup";
 	}
 	
 	@RequestMapping(value="/member/signup", method=RequestMethod.POST)
@@ -40,7 +40,7 @@ public class MemberController {
 	
 	@GetMapping(value="/member/login")
 	public String memberLogin() {
-		return "member/login";
+		return "/member/login";
 	}
 	@PostMapping(value="/member/login")
 	public String memberLoginPost(MemberVO member, Model model) {
@@ -55,7 +55,7 @@ public class MemberController {
 		return "message";
 	}
 	@GetMapping("/member/logout")
-	public String memberLogout(Model model, HttpServletRequest request) {
+	public String memberLogout(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg = new Message("/", null);
