@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+ 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <title>게시글 등록</title>
 </head>
 <body>
@@ -19,8 +21,16 @@
 		</div>
 		<div class="form-group">
 			<label>내용</label>
-			<textarea name="bo_contents"></textarea>
+			<textarea name="bo_contents" id="summernote"></textarea>
 		</div>
+		<button class="btn btn-outline-success col-12">등록하기</button>
 	</form>
+	<script>
+      $('#summernote').summernote({
+        placeholder: '내용을 입력하세요',
+        tabsize: 2,
+        height: 400
+      });
+    </script>
 </body>
 </html>
