@@ -28,7 +28,7 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public String list(Model model, Criteria cri) {
-		cri.setPerPageNum(2);
+		cri.setPerPageNum(5);
 		// 현재 페이지에 맞는 게시글을 가져와야함
 		List<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getTotalCount(cri);
@@ -58,6 +58,8 @@ public class BoardController {
 	public String detail(Model model,Integer bo_num, Criteria cri) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
+		// 첨부파일 가져오기 쉬운 버전
+		// List<FileVO> fileList = boardService.getFileList(bo_num);
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);
 		return "/board/detail";
