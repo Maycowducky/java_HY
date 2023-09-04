@@ -1,6 +1,5 @@
 package kr.kh.study.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import kr.kh.study.service.MemberService;
-import kr.kh.study.util.Message;
 import kr.kh.study.vo.MemberVO;
 
 @Controller
@@ -43,7 +41,7 @@ public class MemberController {
 	public String memberLogin() {
 		return "/member/login";
 	}
-	@PostMapping(value="/member/login")
+	@PostMapping("/member/login")
 	public String memberLoginPost(Model model, MemberVO member) {
 		String msg , url;
 		MemberVO user = memberService.login(member);
@@ -57,7 +55,7 @@ public class MemberController {
 		}
 		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
-		
+		model.addAttribute("user", user);
 		return "util/message";
 	}
 	@GetMapping("/member/logout")
@@ -68,7 +66,13 @@ public class MemberController {
 		
 		model.addAttribute("url", url);
 		model.addAttribute("msg", msg);
-		
+
 		return "/util/message";
 	}
 }
+
+
+
+
+
+

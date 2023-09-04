@@ -8,6 +8,5 @@ public interface MemberService {
 
 	MemberVO login(MemberVO member);
 
-
 	
 }
