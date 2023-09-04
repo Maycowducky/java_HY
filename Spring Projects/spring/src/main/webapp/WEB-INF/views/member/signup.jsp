@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>회원가입</title>
 </head>
 <body>
 	<h1>회원가입</h1>
@@ -21,7 +20,7 @@
 			<label>이메일</label>
 			<input type="email" class="form-control" name="me_email">
 		</div>
-		<button class="btn btn-outline-success col-12">회원가입</button>
+		<button class="btn btn-outline-warning col-12">회원가입</button>
 	</form>
 </body>
 </html>

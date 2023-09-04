@@ -4,28 +4,10 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<style type="text/css">
-		.table tbody tr:nth-of-type(2n+1) td{
-			background: #b8daff
-		}
-		.table tbody tr:nth-of-type(2n+2) td{
-			background: #c3e6cb
-		}
-		.table tbody tr:nth-of-type(2n+3) td{
-			background: #f5c6cb
-		}
-		.table tbody tr:nth-of-type(2n+4) td{
-			background: #bee5eb
-		}
-		.table tbody tr:nth-of-type(2n+5) td{
-			background: #ffeeba
-		}
-	</style>
 </head>
 <body>
-	<h1 class="mt-4">게시판</h1>
-	
-  <table class="table">
+	<h1>게시판</h1>
+	<table class="table table-hover">
     <thead>
       <tr>
         <th>번호</th>
@@ -36,9 +18,9 @@
       </tr>
     </thead>
     <tbody>
-    	<c:forEach items="${list }" var="board">
-	      <tr class="table-primary">
-	        <td>${board.bo_num }</td>
+      <c:forEach items="${list }" var="board">
+	      <tr>
+	        <td>${board.bo_num}</td>
 	        <td>
 	        	<a href="<c:url value='/board/detail${pm.cri.currentUrl}&bo_num=${board.bo_num}'/>">${board.bo_title}(${board.bo_comment })</a>
 	        </td>
@@ -50,23 +32,27 @@
     </tbody>
   </table>
   <ul class="pagination justify-content-center">
-	<c:if test="${pm.prev}">
-		<li class="page-item">
-			<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
+  	<c:if test="${pm.prev}">
+	    <li class="page-item">
+	    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.startPage-1)}'/>">이전</a>
 	    </li>
-	</c:if>
-	
-	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+    </c:if>
+    
+    <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
 	    <li class="page-item <c:if test='${pm.cri.page == i}'>active</c:if>">
 	    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(i)}'/>">${i}</a>
 	    </li>
-	</c:forEach>
-	<c:if test="${pm.next}">
+    </c:forEach>
+    <c:if test="${pm.next}">
 	    <li class="page-item">
 	    	<a class="page-link" href="<c:url value='/board/list${pm.cri.getUrl(pm.endPage+1)}'/>">다음</a>
 	    </li>
-	</c:if>
+    </c:if>
   </ul>
   <a class="btn btn-outline-danger" href="<c:url value='/board/insert'/>">글쓰기</a>
 </body>
 </html>
+
+
+
+
