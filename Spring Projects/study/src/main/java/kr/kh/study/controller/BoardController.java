@@ -76,6 +76,18 @@ public class BoardController {
 		return "/util/message";
 		
 	}
+	@GetMapping("/board/delete")
+	public String boardDelete(Model model, Integer bo_num, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.deleteBoard(bo_num, user);
+		if(res) {
+			model.addAttribute("msg", "게시글을 삭제했습니다");
+		} else {
+			model.addAttribute("msg", "게시글을 삭제하지 못했습니다");
+		}
+		model.addAttribute("url", "/board/list");
+		return "/util/message";
+	}
 }
 
 
