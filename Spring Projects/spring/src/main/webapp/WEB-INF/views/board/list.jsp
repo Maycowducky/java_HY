@@ -4,6 +4,23 @@
 <!doctype html>
 <html lang="ko">
 <head>
+	<style type="text/css">
+		.table tbody tr:nth-of-type(2n+1) td{
+			background: #b8daff
+		}
+		.table tbody tr:nth-of-type(2n+2) td{
+			background: #c3e6cb
+		}
+		.table tbody tr:nth-of-type(2n+3) td{
+			background: #f5c6cb
+		}
+		.table tbody tr:nth-of-type(2n+4) td{
+			background: #bee5eb
+		}
+		.table tbody tr:nth-of-type(2n+5) td{
+			background: #ffeeba
+		}
+	</style>
 </head>
 <body>
 	<h1>게시판</h1>
