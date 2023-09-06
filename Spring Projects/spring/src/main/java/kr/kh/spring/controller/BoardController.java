@@ -61,12 +61,15 @@ public class BoardController {
 		return "message";
 	}
 	@GetMapping("/detail")
-	public String detail(Model model, Integer bo_num , Criteria cri) {
+	public String detail(Model model, Integer bo_num , Criteria cri, HttpSession session) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
 		//List<FileVO> fileList = boardService.getFileList(bo_num)
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		LikeVO like = boardService.getBoardLike(bo_num, user);
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);
+		model.addAttribute("like", like);
 		return "/board/detail";
 	}
 	@GetMapping("/update")
@@ -112,7 +115,9 @@ public class BoardController {
 	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
 		Map<String, Object> map = new HashMap<String, Object>();
 		int res = boardService.like(likeVo);
+		BoardVO board = boardService.getBoard(likeVo.getLi_bo_num());
 		map.put("res", res);
+		map.put("board", board);
 		return map;
 	}
 }
