@@ -30,7 +30,6 @@
 		</div>
 	</c:if>
 	<div class="form-group clearfix">
-	
 		<button class="btn btn-like btn<c:if test="${like.li_state!=1 }">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
 		<button class="btn btn-like btn<c:if test="${like.li_state!=-1 }">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
 	</div>
@@ -53,10 +52,25 @@
 		</c:choose>
 	</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
+	<a href="<c:url value='/board/insert?bo_ori_num=${board.bo_num}'/>" class="btn btn-outline-success">답글</a>
 	<c:if test="${user.me_id == board.bo_me_id}">
 		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
 		<a href="<c:url value='/board/delete?bo_num=${board.bo_num}'/>" class="btn btn-outline-danger">삭제</a>
 	</c:if>
+	
+	<div class="comment-container mt-5">
+		<!-- 댓글 입력창 -->
+		<div class="input-group mb-3">
+		    <textarea class="form-control" placeholder="댓글" name="co_contents"></textarea>
+			    <div class="input-group-append">
+			      <button class="btn btn-outline-success btn-comment-insert">등록</button>
+			    </div>
+		 </div>
+		<!-- 댓글 목록창 -->
+		
+		<!-- 댓글 페이지네이션 -->
+	</div>
+	<!-- 추천기능 자바스크립트 -->
 	<script type="text/javascript">
 		//추천 버튼을 클릭했을 때 콘솔창에 추천이라고 출력 
 		$('.btn-like').click(function(){
@@ -108,6 +122,45 @@
 			}
 		}
 		
+	</script>
+
+	<!-- 댓글기능 자바스크립트 -->
+	<script type="text/javascript">
+		$('[name=co_contents]').focus(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('댓글 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				$(this).blur();
+				return;
+			}
+		});
+		$('.btn-comment-insert').click(()=>{
+			if('${user.me_id}' == ''){
+				if(confirm('댓글 작성하려면 로그인 해야합니다. 로그인을 하겠습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				return;
+			}
+			let co_contents = $('[name=co_contents]')val();
+			if(co_contents == ''){
+				alert('내용을 입력하세요.');
+				return;
+			}
+			let comment = {
+					co_contents : co_contents,
+					co_bo_num : '${board.bo_num}',
+					co_me_id : '${user.me_id}'
+			}
+			ajaxJsontoJson(false, 'post', '/comment/insert', comment, (data)=>{z
+				if(data.res){
+					alert('댓글이 등록됐습니다.');
+					$('[name=co_contents]').val('');
+				}else{
+					alert('댓글을 등록하지 못했습니다.');
+				}
+			})
+		});
 	</script>
 </body>
 </html>

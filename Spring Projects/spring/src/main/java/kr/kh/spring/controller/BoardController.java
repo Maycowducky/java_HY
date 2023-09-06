@@ -45,14 +45,15 @@ public class BoardController {
 	}
 	
 	@GetMapping("/insert")
-	public String insert() {
+	public String insert(Model model, Integer bo_ori_num) {
+		model.addAttribute("bo_ori_num", bo_ori_num == null ? 0 : bo_ori_num);
 		return "/board/insert";
 	}
 	@PostMapping("/insert")
-	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] files) {
+	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] files2) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
-		if(boardService.insertBoard(board, user, files)) {
+		if(boardService.insertBoard(board, user, files2)) {
 			msg = new Message("/board/list", "게시글을 등록했습니다.");
 		}else {
 			msg = new Message("/board/insert", "게시글을 등록하지 못했습니다.");
@@ -64,7 +65,6 @@ public class BoardController {
 	public String detail(Model model, Integer bo_num , Criteria cri, HttpSession session) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
-		//List<FileVO> fileList = boardService.getFileList(bo_num)
 		MemberVO user = (MemberVO) session.getAttribute("user");
 		LikeVO like = boardService.getBoardLike(bo_num, user);
 		model.addAttribute("board", board);
@@ -114,6 +114,7 @@ public class BoardController {
 	@PostMapping("/like")
 	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
 		Map<String, Object> map = new HashMap<String, Object>();
+		//추천 : 1, 비추천 : -1, 취소: 0
 		int res = boardService.like(likeVo);
 		BoardVO board = boardService.getBoard(likeVo.getLi_bo_num());
 		map.put("res", res);

@@ -4,39 +4,21 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<style type="text/css">
-		.table tbody tr:nth-of-type(2n+1) td{
-			background: #b8daff
-		}
-		.table tbody tr:nth-of-type(2n+2) td{
-			background: #c3e6cb
-		}
-		.table tbody tr:nth-of-type(2n+3) td{
-			background: #f5c6cb
-		}
-		.table tbody tr:nth-of-type(2n+4) td{
-			background: #bee5eb
-		}
-		.table tbody tr:nth-of-type(2n+5) td{
-			background: #ffeeba
-		}
-	</style>
 </head>
 <body>
 	<h1>게시판</h1>
 	<form action="" method="get">
-	  	<div class="input-group mb-3">
-	    	<div class="input-group-prepend">
-		    	<select class="form-control" name="type">
-			      	<option value="0" <c:if test="${pm.cri.type == '0' }">selected</c:if>>전체</option>
-			      	<option value="bo_title" <c:if test="${pm.cri.type == 'bo_title' }">selected</c:if>>제목</option>
-			      	<option value="bo_me_id" <c:if test="${pm.cri.type == 'bo_me_id' }">selected</c:if>>작성자</option>
-			      	<option value="bo_contents" <c:if test="${pm.cri.type == 'bo_contents' }">selected</c:if>>내용</option>
-		      	</select>
-	   		</div>
-		    <input type="text" class="form-control" name="search" value="${pm.cri.search}">
-		    <button class="btn btn-outline-success">검색</button>
-  		</div>
+	  <div class="input-group mb-3">
+	  	<div class="input-group-prepend">
+		    <select class="form-control" name="type">
+		      <option value="0" <c:if test="${pm.cri.type == '0' }">selected</c:if>>전체</option>
+		      <option value="bo_title" <c:if test="${pm.cri.type == 'bo_title' }">selected</c:if>>제목</option>
+		      <option value="bo_contents" <c:if test="${pm.cri.type == 'bo_contents' }">selected</c:if>>내용</option>
+		    </select>
+	    </div>
+	    <input type="text" class="form-control" name="search" value="${pm.cri.search}">
+	    <button class="btn btn-outline-success">검색</button>
+	  </div>
 	</form>
 	<table class="table table-hover">
     <thead>
@@ -53,7 +35,10 @@
 	      <tr>
 	        <td>${board.bo_num}</td>
 	        <td>
-	        	<a href="<c:url value='/board/detail${pm.cri.currentUrl}&bo_num=${board.bo_num}'/>">${board.bo_title}(${board.bo_comment })</a>
+	        	<a href="<c:url value='/board/detail${pm.cri.currentUrl}&bo_num=${board.bo_num}'/>">
+	        	<c:if test="${board.bo_num != board.bo_ori_num }"><span style="color:red">답글 : </span></c:if>
+	        	${board.bo_title}(${board.bo_comment })
+	        	</a>
 	        </td>
 	        <td>${board.bo_me_id }</td>
 	        <td>${board.bo_views }</td>
@@ -83,7 +68,3 @@
   <a class="btn btn-outline-danger" href="<c:url value='/board/insert'/>">글쓰기</a>
 </body>
 </html>
-
-
-
-
