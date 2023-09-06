@@ -111,8 +111,8 @@ public class BoardController {
 	@PostMapping("/like")
 	public Map<String, Object> ajaxTest(@RequestBody LikeVO likeVo){
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println(likeVo);
-		map.put("res", 1);
+		int res = boardService.like(likeVo);
+		map.put("res", res);
 		return map;
 	}
 }
