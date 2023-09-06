@@ -31,8 +31,8 @@
 	</c:if>
 	<div class="form-group clearfix">
 	
-		<button class="btn btn-like btn<c:if test="${like.li_state != 1 }">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
-		<button class="btn btn-like btn<c:if test="${like.li_state != -1 }">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
+		<button class="btn btn-like btn<c:if test="${like.li_state!=1 }">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
+		<button class="btn btn-like btn<c:if test="${like.li_state!=-1 }">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
 	</div>
 	<div class="form-group">
 		<label>내용</label>
@@ -59,10 +59,10 @@
 	</c:if>
 	<script type="text/javascript">
 		//추천 버튼을 클릭했을 때 콘솔창에 추천이라고 출력 
-		$('.btn-like').click(()=>{
+		$('.btn-like').click(function(){
 			if('${user.me_id}' == ''){
-				alert('로그인한 회원만 이용이 가능합니다.');
-				if(confirm('로그인 화면으로 이동하시겠습니까?')){
+				//alert('로그인한 회원만 이용이 가능합니다.');
+				if(confirm('로그인 화면으로 이동하겠습니까?')){
 					location.href = '<c:url value="/member/login"/>'
 				}
 				return;
@@ -80,29 +80,34 @@
 					alert('비추천했습니다.');
 				}else if(data.res == 0){
 					if(li_state == 1){
-						alert('추천을 취소했습니다.');	
+						alert('추천을 취소했습니다.');
 					}
 					else{
 						alert('비추천을 취소했습니다.');
-						}
 					}
-					displayLikeBtn(data.res);
-					$('.text-up').text(data.board.bo_up);
-					$('.text-down').text(data.board.bo_down);
-				})
+				}
+				diplayLikeBtn(data.res);
+				$('.text-up').text(data.board.bo_up);
+				$('.text-down').text(data.board.bo_down);
 			})
-			
-			function displayLikeBtn(li_state){
+		})
+		
+		
+		
+		function diplayLikeBtn(li_state){
 			let $upBtn = $('.btn-up');
-			let	$downBtn = $('.btn-down');
+			let $downBtn = $('.btn-down');
+			
 			$upBtn.removeClass('btn-primary').addClass('btn-outline-primary');
 			$downBtn.removeClass('btn-danger').addClass('btn-outline-danger');
+			
 			if(li_state == 1){
-				$upBtn.addClass('btn-primary').removeClass('btn-outline-primary');
+				$upBtn.addClass('btn-primary').removeClass('btn-outline-primary');	
 			}else if(li_state == -1){
 				$downBtn.addClass('btn-danger').removeClass('btn-outline-danger');
 			}
 		}
+		
 	</script>
 </body>
 </html>
