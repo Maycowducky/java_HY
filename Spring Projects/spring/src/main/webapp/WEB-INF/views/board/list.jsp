@@ -68,3 +68,7 @@
   <a class="btn btn-outline-danger" href="<c:url value='/board/insert'/>">글쓰기</a>
 </body>
 </html>
+
+
+
+

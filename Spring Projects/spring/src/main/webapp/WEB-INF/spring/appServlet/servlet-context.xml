@@ -49,16 +49,12 @@
 			<mapping path="/member/login"/>
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
-	</interceptors>
-	<interceptors>
 		<interceptor>
 			<mapping path="/board/insert"/>
 			<mapping path="/board/update"/>
 			<mapping path="/board/delete"/>
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
-	</interceptors>
-	<interceptors>
 		<interceptor>
 			<mapping path="/member/login"/>
 			<mapping path="/member/signup"/>
@@ -70,6 +66,7 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 </beans:beans>
+
 
 
 

@@ -18,7 +18,7 @@
 			url : '<c:url value="/"/>'+url, 
 			data : JSON.stringify(sendObject), 
 			contentType : "application/json; charset=UTF-8", 
-			dataType : "json", 
+			dataType : "json",
 			success : successFunc
 		});
 	}

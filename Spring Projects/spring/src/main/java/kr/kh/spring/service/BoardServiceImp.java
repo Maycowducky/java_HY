@@ -184,7 +184,6 @@ public class BoardServiceImp implements BoardService{
 			boardDao.insertLike(likeVo);
 		}
 		else {//있으면
-			
 			//db에 있는 추천 상태와 화면에 누른 추천 상태가 같으면 => 취소 
 			if(dbLikeVo.getLi_state() == likeVo.getLi_state()) {
 				likeVo.setLi_state(0);
@@ -204,3 +203,9 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectLike(bo_num, user.getMe_id());
 	}
 }
+
+
+
+
+
+
