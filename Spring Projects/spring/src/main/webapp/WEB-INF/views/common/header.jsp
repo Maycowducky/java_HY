@@ -26,4 +26,15 @@
       <a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
     </li>
   </ul>
+  
+  <c:if test="${user != null && user.me_role == 'ADMIN'}">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        관리자
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="<c:url value='/admin/board/type'/>">게시판 타입 관리</a>
+      </div>
+    </li>
+  </c:if>
 </nav>
