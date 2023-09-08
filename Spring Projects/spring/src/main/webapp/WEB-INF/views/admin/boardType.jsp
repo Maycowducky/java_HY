@@ -10,13 +10,13 @@
 	
 	<div class="input-group mb-3 mt-3">
 		<div class="input-group-prepend">
-			<select class="form-control" name="type">
+			<select class="form-control" id="authority">
 				<option value="0">작성권한</option>
 				<option value="USER">회원이상</option>
 				<option value="ADMIN">관리자</option>
 			</select>
 		</div>
-		<input type="text" class="form-control">
+		<input type="text" class="form-control" name="bt_title">
 		<button class="btn btn-outline-success btn-insert">등록</button>
 	</div>
 	<table class="table table-hover">
@@ -29,22 +29,62 @@
       </tr>
     </thead>
     <tbody>
+    	<c:forEach items="#{list }" var="bt">
 	      <tr>
-	        <td>1</td>
-	        <td>일반</td>
+	        <td>${bt.bt_num }</td>
+	        <td><input type="text" value="${bt.bt_title}" class="form-control"></td>
 	        <td>
 	        	<select class="form-control" name="type">
-					<option value="USER">회원이상</option>
-					<option value="ADMIN">관리자</option>
+					<option value="USER" <c:if test="${bt.baList.size() ==1" }">selected</c:if>>회원이상</option>
+					<option value="ADMIN" <c:if test="${bt.baList.size() ==2" }">selected</c:if>>관리자</option>
 				</select>
 	        </td>
 	        <td>
-				<button>수정</button>
-				<button>삭제</button>
+				<button class="btn btn-outline-success">수정</button>
+				<button class="btn btn-outline-danger" onclick="deleteBoardType(${bt.bt_num})">삭제</button>
 			</td>
 	      </tr>
+	      </c:forEach>
     </tbody>
   </table>
-	
+  <script type="text/javascript">
+  	$('.btn-insert').click(()=>{
+  		let bt_title = $('#bt_title').val();
+  		let bt_authority = $('#authority').val();
+  		if(bt_authority == '0'){
+  			alert('작성 권한을 선택하세요.');
+  			return;
+  		}
+  		if(bt_title.trim().length == 0){
+  			alert('게시판명을 입력하세요.');
+  			return;
+  		}
+  		let boardType = {
+  				bt_title : bt_title,
+  				bt_authority : bt_authority
+  		};
+  		ajaxJsonToJson(false, 'post', '/admin/board/type/insert', boardType,(data)=>{
+  			if(data.res){
+  				alert('게시판 종류를 추가했습니다');
+  			location.reload();
+  			} else{
+  				alert('게시판 종류를 추가하지 못했습니다.');
+  			}
+  		});
+  	});
+  	function deleteBoardType(bt_num){
+  		let bt ={
+  				bt_num : bt_num
+  		}
+  		ajaxJsonToJson(false, 'post', '/admin/board/type/delete', boardType,(data)=>{
+  			if(data.res){
+  				alert('게시판 종류를 삭제했습니다');
+  			location.reload();
+  			} else{
+  				alert('게시판 종류를 삭제하지 못했습니다.');
+  			}
+  		});
+  	}
+  </script>
 </body>
 </html>
