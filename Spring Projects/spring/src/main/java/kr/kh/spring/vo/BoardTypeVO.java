@@ -8,6 +8,6 @@ import lombok.Data;
 public class BoardTypeVO {
 	int bt_num;
 	String bt_title;
-	List<BoardAutorityVO> baList;
+	List<BoardAuthorityVO> baList;
 	String bt_authority;
 }

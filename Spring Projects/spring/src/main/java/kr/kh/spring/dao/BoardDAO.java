@@ -46,12 +46,16 @@ public interface BoardDAO {
 
 	boolean insertBoardType(@Param("bt")BoardTypeVO boardType);
 
-	void insertBoardAuthority(@Param("ba_bt_num")int bt_num, @Param("ba_authority") String authority);
+	void insertBoardAuthority(@Param("ba_bt_num")int bt_num, @Param("ba_authority")String authority);
 
 	int selectBoardCountByBoardType(@Param("bo_bt_num")int bt_num);
 
 	int selectBoardTypeCount();
 
 	boolean deleteBoardType(@Param("bt_num")int bt_num);
+
+	boolean updateBoardType(@Param("bt")BoardTypeVO boardType);
+
+	List<BoardTypeVO> selectBoardTypeListByRole(@Param("me_role")String me_role);
 
 }

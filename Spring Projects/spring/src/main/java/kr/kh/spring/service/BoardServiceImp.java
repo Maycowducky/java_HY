@@ -205,8 +205,8 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
+	// 전체 게시글을 가져오는것
 	public List<BoardTypeVO> getBoardTypeList() {
-		
 		return boardDao.selectBoardTypeList();
 	}
 
@@ -215,7 +215,7 @@ public class BoardServiceImp implements BoardService{
 		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
 			return false;
 		}
-		//게시판명이 중복되는걸 방치하기 위해
+		//게시판명이 중복되는걸 방지하기 위해
 		try {
 			boolean res = boardDao.insertBoardType(boardType);
 			if(!res) {
@@ -230,7 +230,6 @@ public class BoardServiceImp implements BoardService{
 		case "ADMIN":
 			boardDao.insertBoardAuthority(boardType.getBt_num(), "ADMIN");
 			break;
-
 		}
 		return true;
 	}
@@ -240,7 +239,7 @@ public class BoardServiceImp implements BoardService{
 		if(boardType == null) {
 			return false;
 		}
-		//등록된 게시글이 있는지 확인
+		//등록된 게시글이 있는지 확인 
 		int count = boardDao.selectBoardCountByBoardType(boardType.getBt_num());
 		//있으면 삭제 실패
 		if(count != 0) {
@@ -248,12 +247,34 @@ public class BoardServiceImp implements BoardService{
 		}
 		//등록된 게시판 타입이 몇개 있는지 확인
 		int btCount = boardDao.selectBoardTypeCount();
-		//1개 있으면 삭제 실패
+		
+		//1개 있으면 삭제 실패 
 		if(btCount == 1) {
 			return false;
 		}
 		//게시판 타입을 삭제
 		return boardDao.deleteBoardType(boardType.getBt_num());
+	}
+
+	@Override
+	public boolean updateBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null) {
+			return false;
+		}
+		try {
+			return boardDao.updateBoardType(boardType);
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	// 권한이 있는것만 불러옴
+	public List<BoardTypeVO> getBoardTypeList(MemberVO user) {
+		if(user == null || user.getMe_role() == null) {
+			return null;
+		}
+		return boardDao.selectBoardTypeListByRole(user.getMe_role());
 	}
 }
 
