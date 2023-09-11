@@ -205,7 +205,6 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	// 전체 게시글을 가져오는것
 	public List<BoardTypeVO> getBoardTypeList() {
 		return boardDao.selectBoardTypeList();
 	}
@@ -269,7 +268,6 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	// 권한이 있는것만 불러옴
 	public List<BoardTypeVO> getBoardTypeList(MemberVO user) {
 		if(user == null || user.getMe_role() == null) {
 			return null;

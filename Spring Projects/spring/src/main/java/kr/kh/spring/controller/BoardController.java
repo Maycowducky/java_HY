@@ -47,15 +47,14 @@ public class BoardController {
 	
 	@GetMapping("/insert")
 	public String insert(Model model, Integer bo_ori_num, HttpSession session) {
-	// 로그인한 회원이 작성 가능한 게시판 타입을 가져와야 함.
-	// 로그인한 회원 정보
-	// 
+		//로그인한 회원이 작성 가능한 게시판 타입을 가져와야 함.
+		//로그인한 회원 정보 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
-		List<BoardTypeVO> typelist = boardService.getBoardTypeList(user);
+		List<BoardTypeVO> typeList = boardService.getBoardTypeList(user);
 			
 		model.addAttribute("bo_ori_num", bo_ori_num == null ? 0 : bo_ori_num);
-		model.addAttribute("typelist", typelist);
+		model.addAttribute("typeList", typeList);
 		return "/board/insert";
 	}
 	@PostMapping("/insert")
