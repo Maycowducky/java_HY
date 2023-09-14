@@ -13,7 +13,7 @@ import kr.kh.app.vo.BoardVO;
 
 public class List extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardService boardService = new BoardServiceImp();
+    private BoardService boardService = new BoardServiceImp();
     public List() {
         super();
     }

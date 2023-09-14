@@ -15,7 +15,7 @@
 	<div class="container">
 		<h1 class="mt-5">게시글 상세</h1>
 		<c:choose>
-			<c:when test="${board == null}">
+			<c:when test="${board == null }">
 				<h2>삭제된 게시글이거나 등록되지 않은 게시글입니다.</h2>
 			</c:when>
 			<c:otherwise>

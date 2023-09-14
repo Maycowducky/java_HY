@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="<%=request.getContextPath()%>/singup">회원가입</a>
-<a href="<%=request.getContextPath()%>/withdraw">회원탈퇴</a>
-<a href="<%=request.getContextPath()%>/list">게시글 조회</a>
+	<h1>조회 결과가 없습니다.</h1>
+	<a href="/ex1">메인페이지로 돌아가기</a>
 </body>
 </html>

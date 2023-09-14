@@ -4,30 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h1>회원 가입</h1>
-	<form action="<%=request.getContextPath()%>/signup" method="post">
+	<h1>회원가입</h1>
+	<form action="<%=request.getContextPath()%>/singup" method="post">
 		<input type="text" name="id"> <br>
 		<input type="password" name="pw"> <br>
-		<button>회원 가입</button>
+		<button>회원가입</button>
 	</form>
-	<%=request.getAttribute("signupOk") %>
 	<script>
-		<%
+		<% 
 			Boolean result = (Boolean)request.getAttribute("signupOk");
-			
-			if(result != null && result) {
+			if(result != null && result){
 		%>
-				alert('회원가입 성공!')
+			alert('회원가입 성공!')
 		<%
-			} else if(result != null && !result) {
+			}else if(result != null && !result){
 		%>
-				alert('회원가입 실패!')
+			alert('회원가입 실패!')
 		<%
 			}
 		%>
-	</script>  
+	</script>
 </body>
 </html>

@@ -10,8 +10,8 @@
 <body>
 	<h1>게시글 수정</h1>
 	<form action="<c:url value='/board/update'/>" method="post">
-		<input type="hidden" name="bo_num" value="${board.bo_num}">
-		<input type="text" name="title" placeholder="제목" value="${board.bo_title}"> <br>
+		<input type="hidden" name="bo_num" value="${board.bo_num }">
+		<input type="text" name="title" placeholder="제목" value="${board.bo_title }"> <br>
 		<button>등록</button>
 	</form>
 	

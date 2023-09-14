@@ -1,6 +1,6 @@
 package kr.kh.app.vo;
 
-import lombok.Data; 
+import lombok.Data;
 
 @Data
 public class MemberVO {
@@ -12,6 +12,5 @@ public class MemberVO {
 	public MemberVO(String id, String pw) {
 		this.me_id = id;
 		this.me_pw = pw;
-		
 	}
 }

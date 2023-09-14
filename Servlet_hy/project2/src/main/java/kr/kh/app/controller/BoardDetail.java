@@ -12,18 +12,18 @@ import kr.kh.app.vo.BoardVO;
 
 public class BoardDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardService boardService = new BoardServiceImp();
+    private BoardService boardService = new BoardServiceImp();
     public BoardDetail() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Integer bo_num;
+		Integer bo_num; 
 		try {
 			bo_num = Integer.parseInt(request.getParameter("bo_num"));
 		}catch(Exception e) {
-			bo_num = null;	
+			bo_num = null;
 		}
 		BoardVO board = boardService.getBoard(bo_num);
 		request.setAttribute("board", board);
