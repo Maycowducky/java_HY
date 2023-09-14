@@ -3,10 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	
   <settings>
     <setting name="cacheEnabled" value="false"/>
 	<setting name="localCacheScope" value="STATEMENT"/>
   </settings>
+  <typeAliases>
+  		<typeAlias type="kr.kh.app.vo.BoardVO" alias="BoardVO"/>
+  	</typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -18,6 +22,7 @@
       </dataSource>
     </environment>
   </environments>
+  
   <mappers>
     <mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
     <mapper resource="kr/kh/app/dao/BoardMapper.xml"/>

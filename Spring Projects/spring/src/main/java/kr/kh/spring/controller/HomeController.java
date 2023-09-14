@@ -44,6 +44,7 @@ public class HomeController {
 	@PostMapping("/ajax/test")
 	public Map<String, Object> ajaxTest(@RequestBody MemberVO member){
 		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(member);
 		map.put("name", "홍길동");
 		return map;
 	}
@@ -62,6 +63,7 @@ public class HomeController {
 		model.addAttribute("msg", msg);
 		return "message";
 	}
+	
 	@ResponseBody
 	@PostMapping("/ajax/test2")
 	public Map<String, Object> ajaxTest2(@RequestParam("bo_num")int bo_num){
