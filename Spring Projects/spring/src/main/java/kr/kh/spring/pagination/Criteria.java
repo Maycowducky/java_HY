@@ -8,7 +8,7 @@ public class Criteria {
 	private int perPageNum; //한 페이지에서 컨텐츠 개수
 	private String type;//검색 타입
 	private String search;//검색어
-	private int bt_num; // 게시판 타입 번호
+	private int bt_num;//게시판타입번호
 	
 	public Criteria() {
 		page = 1;
