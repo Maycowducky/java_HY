@@ -17,5 +17,6 @@
 		<input type="file" name="files"> <br>
 		<button>등록</button>
 	</form>
+	
 </body>
 </html>

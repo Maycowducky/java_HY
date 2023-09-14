@@ -16,12 +16,14 @@
 		<h3>첨부파일</h3>
 		<c:forEach items="${fileList}" var="file">
 			<div class="box">
-				<a href="<c:url value='/download${file.fi_name}'/>" 
-				download="${file.fi_ori_name}">${file.fi_ori_name}</a>
+				<a  href="<c:url 
+					value='/download${file.fi_name}'/>" 
+					download="${file.fi_ori_name }"
+				>${file.fi_ori_name }</a>
 				<a href="#" class="btn-del" data-num="${file.fi_num}"><button type="button">X</button></a>
 			</div>
 		</c:forEach>
-		<c:forEach begin="1" end="${3 - fileList.size()}">
+		<c:forEach begin="1" end="${3 - fileList.size() }">
 			<input type="file" name="files"> <br>
 		</c:forEach>
 		<button class="btn-submit">등록</button>

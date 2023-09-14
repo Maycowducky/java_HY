@@ -11,10 +11,11 @@
 		insert into member(me_id, me_pw, me_email) values(#{m.me_id}, #{m.me_pw}, #{m.me_email})
 	</insert>
 	<update id="updateMemberSession">
-		update 
-			member 
-		set 
-			me_session_id = #{user.me_session_id}, me_session_limit = #{user.me_session_limit}
+		update
+			member
+		set
+			me_session_id = #{user.me_session_id},
+			me_session_limit = #{user.me_session_limit}
 		where
 			me_id = #{user.me_id}
 	</update>
@@ -24,6 +25,6 @@
 		from 
 			member
 		where
-			me_session_id = #{me_session_id} and me_session_limit >= now()
+			me_session_id = #{me_session_id} and me_session_limit >= now() 
 	</select>
 </mapper>

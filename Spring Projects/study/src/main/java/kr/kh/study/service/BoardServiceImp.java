@@ -1,5 +1,6 @@
 package kr.kh.study.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class BoardServiceImp implements BoardService{
 	BoardDAO boardDao;
 	
 	String uploadPath = "D:\\uploadfiles";
-	
+
 	@Override
 	public List<BoardVO> getBoardList(Criteria cri) {
 		//매개변수체크
@@ -70,7 +71,7 @@ public class BoardServiceImp implements BoardService{
 		if(!res) {
 			return false;
 		}
-		// 첨부 파일 추가
+		//첨부파일 추가 
 		uploadFiles(files, board.getBo_num());
 		return true;
 	}
@@ -95,7 +96,6 @@ public class BoardServiceImp implements BoardService{
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@Override
@@ -112,9 +112,8 @@ public class BoardServiceImp implements BoardService{
 		}
 		//추가된 첨부파일 업로드 및 DB 추가
 		uploadFiles(files, board.getBo_num());
-		// 삭제된 첨부파일 삭제 및 DB 제거
+		//삭제된 첨부파일 삭제 및 DB 제거
 		deleteFiles(delNums);
-		
 		boolean res = boardDao.updateBoard(board);
 		return res;
 	}
@@ -143,10 +142,10 @@ public class BoardServiceImp implements BoardService{
 		if(board == null || !board.getBo_me_id().equals(user.getMe_id())) {
 			return false;
 		}
-		// 첨부파일 삭제
-		// 게시글의 모든 첨부파일들을 가져옴
+		//첨부파일을 삭제 
+		//게시글의 모든 첨부파일들을 가져옴 
 		List<FileVO> fileList = boardDao.selectFileList(bo_num);
-		// 첨부파일 정보를 주면서 삭제하라고 요청
+		//첨부파일 정보를 주면서 삭제하라고 요청 
 		deleteFiles(fileList);
 		return boardDao.deleteBoard(bo_num);
 	}
@@ -175,7 +174,6 @@ public class BoardServiceImp implements BoardService{
 
 	@Override
 	public int getBoardTotalCount() {
-		
 		return boardDao.selectBoardTotalCount();
 	}
 	

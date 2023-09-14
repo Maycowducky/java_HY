@@ -30,7 +30,7 @@ public class BoardController {
 		//서비스에게 게시글 리스트를 가져오라고 시킴 
 		List<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getBoardTotalCount();
-		
+
 		PageMaker pm = new PageMaker(3, cri, totalCount);
 		//가져온 리스트를 화면에 전송 
 		model.addAttribute("list", list);
@@ -72,14 +72,14 @@ public class BoardController {
 	public String boardUpdate(Model model,Integer bo_num) {
 		BoardVO board = boardService.getBoard(bo_num);
 		List<FileVO> fileList = boardService.getFileList(bo_num);
-		//가져온 게시글을 화면에 전송
+		
 		model.addAttribute("board", board);
 		model.addAttribute("fileList", fileList);
 		return "/board/update";
 	}
 	@PostMapping("/board/update")
-	public String boardUpdatePost(Model model, BoardVO board, HttpSession session, MultipartFile[] files,
-			int [] delNums) {
+	public String boardUpdatePost(Model model, BoardVO board, HttpSession session, 
+			MultipartFile[] files, int [] delNums) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		boolean res = boardService.update(board,user, files, delNums);
 		if(res) {

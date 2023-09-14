@@ -31,16 +31,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				String value = request.getSession().getId();
 				Cookie cookie = new Cookie("lc", value);
 				cookie.setPath("/");
-				//유지시간
 				int day = 7;
-				int time = day * 24 * 60 * 60; // 하루를 초로 변환한 값에 day를 곱함
+				int time = day * 24 * 60 * 60; //하루를 초로 변한한 값에 day를 곱함  
 				cookie.setMaxAge(time);
 				response.addCookie(cookie);
 				
 				Date date = new Date(System.currentTimeMillis() + time * 1000);
 				user.setMe_session_id(value);
 				user.setMe_session_limit(date);
-				memberService.updateMemberSession(user);
+				memberService.updateMemberSesseion(user);
 			}
 		}
 	}

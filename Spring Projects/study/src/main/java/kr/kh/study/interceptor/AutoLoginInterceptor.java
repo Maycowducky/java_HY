@@ -20,26 +20,24 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
-		// 이미 로그인 되어있으면 건너뜀
+
+		//이미 로그인되어 있으면 건너뜀
 		HttpSession session = request.getSession();
-		// 부모 클래스 객체(Object)를 자식 클래스 객체로 형변환
+		//부모클래스 객체(Object)를 자식 클래스(MemberVO) 객체로 형변환
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user != null) {
 			return true;
 		}
-		// 로그인이 되어 있지 않으면 쿠키가 있는지 확인
+		//로그인되어 있지 않으면 쿠키가 있는지 확인
 		Cookie cookie = WebUtils.getCookie(request, "lc");
-		// 쿠키가 없으면 건너뜀(자동로그인 X)
+		//쿠키가 없으면 건너뜀(자동로그인 X)
 		if(cookie == null) {
 			return true;
 		}
-		// 쿠키가 있으면 가져옴
 		user = memberService.getMemberBySession(cookie.getValue());
 		if(user != null) {
 			session.setAttribute("user", user);
 		}
 		return true;
 	}
-	
 }
