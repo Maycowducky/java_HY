@@ -15,6 +15,15 @@
         <%@ include file="header.jsp"%>
     </head>
     <body>
+    	<div>
+    		<h4 style="text-align: center;" class="mt-5">
+    			<strong>스페셜 레터 스웨터 기획전</strong>
+    		</h4>
+    		<p style="text-align: center;">
+    			<span style="color: rgb(119, 119, 119);">CASUAL STYLE 특별 아이템 할인전
+    			</span>
+    		</p>
+    	</div>
          <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
