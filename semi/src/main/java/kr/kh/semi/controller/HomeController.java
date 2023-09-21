@@ -1,4 +1,4 @@
-package kr.kh.semi;
+package kr.kh.semi.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainPage() {
 		logger.info("메인페이지 시작");
 		

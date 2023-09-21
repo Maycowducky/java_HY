@@ -36,7 +36,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">캐주얼 스웨터</h5>
+                                    <h5 class="fw-bolder">HAWKINS 캐주얼 스웨터</h5>
                                     <!-- Product price-->
                                     \40,000
                                 </div>
@@ -57,7 +57,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
+                                    <h5 class="fw-bolder">LIFENEEDS 캘리포니아 BLACK</h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star"></div>
@@ -87,7 +87,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
+                                    <h5 class="fw-bolder">NEWYORK 후드티 흰색</h5>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">\18,000</span>
                                     \15,000
@@ -136,7 +136,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
+                                    <h5 class="fw-bolder">남성 니트</h5>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">\39,900</span>
                                     \25,000
