@@ -14,7 +14,6 @@ public class MemberServiceImp implements MemberService {
 	
 	@Override
 	public boolean memberJoin(MemberVO member) throws Exception{
-		member = new MemberVO();
 		
 		memberMapper.memberJoin(member);
 		return false;
@@ -40,17 +39,8 @@ public class MemberServiceImp implements MemberService {
 	
 	}
 
-	@Override
-	public boolean signup(MemberVO member) {
-		if(member == null) {
-		return false;
-		}
-		MemberVO dbMember = memberMapper.selectMember(member.getUser_id());
-		if(dbMember != null) {
-			return false;
-		}
-		return memberMapper.insertMember(member);
-	}
+	
+	
 }
 
 	

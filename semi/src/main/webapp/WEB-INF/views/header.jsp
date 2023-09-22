@@ -86,16 +86,16 @@
 								<div class="modal-body">
 									<form action="" class="was-validated">
 										<div class="form-group">
-											<label for="memberId">아이디 </label> <input type="text"
-												class="form-control" id="memberId" placeholder="아이디를 입력하세요"
-												name="memberId" required>
+											<label for="user_id">아이디 </label> <input type="text"
+												class="form-control" id="user_id" placeholder="아이디를 입력하세요"
+												name="user_id" required>
 											<div class="valid-feedback">확인</div>
 											<div class="invalid-feedback">아이디를 입력해주세요</div>
 										</div>
 										<div class="form-group">
-											<label for="memberPw">비밀번호 </label> <input type="password"
-												class="form-control" id="userPw" placeholder="비밀번호를 입력하세요"
-												name="memberPw" required>
+											<label for="user_pw">비밀번호 </label> <input type="password"
+												class="form-control" id="user_pw" placeholder="비밀번호를 입력하세요"
+												name="user_pw" required>
 											<div class="valid-feedback">확인</div>
 											<div class="invalid-feedback">비밀번호를 입력해주세요</div>
 										</div>

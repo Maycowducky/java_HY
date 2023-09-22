@@ -10,5 +10,5 @@ public interface MemberService {
 
 	public MemberVO login(MemberVO member);
 
-	public boolean signup(MemberVO member);
+
 }

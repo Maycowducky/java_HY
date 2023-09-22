@@ -8,11 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.semi.service.MemberService;
-import kr.kh.semi.util.Message;
 import kr.kh.semi.vo.MemberVO;
 
 @Controller
@@ -29,16 +28,17 @@ public class MemberController {
 		logger.info("회원가입 페이지 진입");
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("/joinPro")
 	public String join(MemberVO member, Model model) throws Exception{
 		
 		logger.info("post회원가입 진입");
+		System.out.println(member);
 		boolean chk = memberService.memberJoin(member);
 		logger.info("회원가입 성공");
 		
 		model.addAttribute("chk", chk);
 		
-		return "/member/join";
+		return "/member/joinPro";
 	}
 	
 	@GetMapping("/idCheck")
@@ -54,5 +54,5 @@ public class MemberController {
 		}
 		return chk;
 	}
-	
+
 }
