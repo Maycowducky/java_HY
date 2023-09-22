@@ -101,7 +101,7 @@
 										</div>
 										<button type="submit" class="btn btn-primary"
 											style="margin-left: 50%;">로그인</button>
-										<button type="button" class="btn btn-secondary" onclick="location.href='/member/joinForm'" >회원가입</button>
+										<button type="button" class="btn btn-secondary" onclick="location.href='<c:url value='/member/joinForm' />'">회원가입</button>
 									</form>
 								</div>
 								<!-- Modal footer -->

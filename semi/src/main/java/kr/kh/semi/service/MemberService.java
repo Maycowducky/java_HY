@@ -4,7 +4,11 @@ import kr.kh.semi.vo.MemberVO;
 
 public interface MemberService {
 
-	public void memberJoin(MemberVO member) throws Exception;
+	public boolean memberJoin(MemberVO member) throws Exception;
 
 	public int idCheck(String memberId);
+
+	public MemberVO login(MemberVO member);
+
+	public boolean signup(MemberVO member);
 }

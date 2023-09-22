@@ -13,10 +13,11 @@ public class MemberServiceImp implements MemberService {
 	public MemberMapper memberMapper;
 	
 	@Override
-	public void memberJoin(MemberVO member) throws Exception{
+	public boolean memberJoin(MemberVO member) throws Exception{
 		member = new MemberVO();
 		
 		memberMapper.memberJoin(member);
+		return false;
 	}
 
 	@Override
@@ -24,4 +25,33 @@ public class MemberServiceImp implements MemberService {
 		int result = memberMapper.idCheck(memberId);
 		return result;
 	}
+
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null) {
+			return null;
+		}
+		MemberVO dbMember = memberMapper.selectMember(member.getUser_id());
+		//가입된 아이디가 아니면
+		if(dbMember == null) {
+			return null;
+		}
+		return dbMember;
+	
+	}
+
+	@Override
+	public boolean signup(MemberVO member) {
+		if(member == null) {
+		return false;
+		}
+		MemberVO dbMember = memberMapper.selectMember(member.getUser_id());
+		if(dbMember != null) {
+			return false;
+		}
+		return memberMapper.insertMember(member);
+	}
 }
+
+	
+

@@ -8,14 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.semi.service.MemberService;
+import kr.kh.semi.util.Message;
 import kr.kh.semi.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "/member")
-
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -39,6 +40,17 @@ public class MemberController {
 		
 		return "/member/join";
 	}
+	@RequestMapping(value="/member/joinForm", method=RequestMethod.GET)
+	public String signupPost(MemberVO member, Model model) {
+		Message msg = new Message("/member/joinForm", "회원가입에 실패했습니다.");
+		
+		if(memberService.signup(member)) {
+			msg = new Message("/", "회원가입에 성공했습니다.");
+		}
+		model.addAttribute("msg",msg);
+		return "message";
+	}
+	
 	@GetMapping("/idCheck")
 	@ResponseBody
 	public String idcheck(String memberId) {
@@ -52,4 +64,5 @@ public class MemberController {
 		}
 		return chk;
 	}
+	
 }
