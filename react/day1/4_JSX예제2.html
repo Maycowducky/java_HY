@@ -13,17 +13,17 @@
 		<!-- 
 			<div>
 				<h1>클릭 수 : 0</h1>
-				<button>클릭</button>
+				<button>클릭</button> 
 			</div>
 		-->
-	</div>	
+	</div>
 	<script type="text/babel">
 		let counter = 0;
-		// 넣을 요소
+		//넣을 요소
 		const container = 
 			document.getElementById('container');
-		// 요소 생성
-		function Element(){
+		//요소 생성
+		function Elemnt(){
 			/*
 			function onClick(){
 				
@@ -32,7 +32,7 @@
 				h1.innerText = `클릭 수 : ${counter}`;
 				
 			}
-			return(
+			return (
 				<div>
 					<h1>클릭 수 : 0</h1>
 					<button onClick={onClick}>클릭</button>
@@ -41,17 +41,17 @@
 			*/
 			function onClick(){
 				counter++;
-				ReactDOM.render(<Element/>, container);
+				ReactDOM.render(<Elemnt/>, container);
 			}
-			return(
+			return (
 				<div>
 					<h1>클릭 수 : {counter}</h1>
 					<button onClick={onClick}>클릭</button>
 				</div>
 			);
 		}
-		// 요소 배치
-		ReactDOM.render(<Element/>, container);
+		//요소 배치
+		ReactDOM.render(<Elemnt/>, container);
 	</script>
 </body>
 </html>
